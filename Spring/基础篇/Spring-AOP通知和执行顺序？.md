@@ -14,7 +14,7 @@
 
 **<font style="color:rgb(223, 64, 42);">Spring在5.2.7之前的执行顺序是：</font>**
 
-![1693988036899-65592d6e-c91e-413b-bc15-aa2d6b0d6983.png](./img/sZF54XM7SHqvaVD4/1693988036899-65592d6e-c91e-413b-bc15-aa2d6b0d6983-085878.png)
+![1693988036899-65592d6e-c91e-413b-bc15-aa2d6b0d6983.png](img/sZF54XM7SHqvaVD4/1693988036899-65592d6e-c91e-413b-bc15-aa2d6b0d6983-085878.png)
 
 **<font style="color:rgb(223, 64, 42);">Spring在5.2.7之后就改变的通知的执行顺序改为：</font>**
 

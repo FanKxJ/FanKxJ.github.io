@@ -2,13 +2,13 @@
 
 <font style="color:rgb(74, 74, 74);">分布式事务是相对本地事务而言的，对于本地事务，利用数据库本身的事务机制，就可以保证事务的ACID特性。</font>
 
-![1695888893434-299916d8-40d8-48d4-a167-58e2342e0f2a.png](./img/gc0yJHY_kAI4dYDx/1695888893434-299916d8-40d8-48d4-a167-58e2342e0f2a-616881.png)
+![1695888893434-299916d8-40d8-48d4-a167-58e2342e0f2a.png](img/gc0yJHY_kAI4dYDx/1695888893434-299916d8-40d8-48d4-a167-58e2342e0f2a-616881.png)
 
 <font style="color:rgb(136, 136, 136);">ACID</font>
 
 <font style="color:rgb(74, 74, 74);">而在分布式环境下，会涉及到多个数据库。</font>
 
-![1695889076528-e0c496e5-a7c3-4122-b377-c4f730b15194.jpeg](./img/gc0yJHY_kAI4dYDx/1695889076528-e0c496e5-a7c3-4122-b377-c4f730b15194-758434.jpeg)
+![1695889076528-e0c496e5-a7c3-4122-b377-c4f730b15194.jpeg](img/gc0yJHY_kAI4dYDx/1695889076528-e0c496e5-a7c3-4122-b377-c4f730b15194-758434.jpeg)
 
 <font style="color:rgb(136, 136, 136);">多数据库</font>
 

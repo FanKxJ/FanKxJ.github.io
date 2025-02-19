@@ -15,7 +15,7 @@
 
 <font style="color:rgb(74, 74, 74);">在实际中，一个节点可以同时充当不同角色。</font>
 
-![1696574091668-8c453f37-6e0b-496e-8b63-dda586174498.png](./img/q5CzysxqwNHRRtv5/1696574091668-8c453f37-6e0b-496e-8b63-dda586174498-923469.png)
+![1696574091668-8c453f37-6e0b-496e-8b63-dda586174498.png](img/q5CzysxqwNHRRtv5/1696574091668-8c453f37-6e0b-496e-8b63-dda586174498-923469.png)
 
 <font style="color:rgb(136, 136, 136);">Paxos的三种角色</font>
 
@@ -24,7 +24,7 @@
 #### <font style="color:black;">算法流程</font>
 <font style="color:rgb(74, 74, 74);">Paxos算法包含两个阶段，第一阶段**Prepare(准备)</font>**<font style="color:rgb(74, 74, 74);">、第二阶段</font>**<font style="color:rgb(74, 74, 74);">Accept(接受)**。</font>
 
-![1695892187691-49e874ad-fe63-49fc-a6ec-5d6051134e6e.png](./img/q5CzysxqwNHRRtv5/1695892187691-49e874ad-fe63-49fc-a6ec-5d6051134e6e-504166.png)
+![1695892187691-49e874ad-fe63-49fc-a6ec-5d6051134e6e.png](img/q5CzysxqwNHRRtv5/1695892187691-49e874ad-fe63-49fc-a6ec-5d6051134e6e-504166.png)
 
 <font style="color:rgb(136, 136, 136);">Paxos算法流程</font>
 
@@ -48,7 +48,7 @@
 
 <font style="color:rgb(74, 74, 74);">所以Paxos算法的整体详细流程如下：</font>
 
-![1695892187582-f6c5442c-822b-4555-a9a6-89f58860f0c9.png](./img/q5CzysxqwNHRRtv5/1695892187582-f6c5442c-822b-4555-a9a6-89f58860f0c9-559716.png)
+![1695892187582-f6c5442c-822b-4555-a9a6-89f58860f0c9.png](img/q5CzysxqwNHRRtv5/1695892187582-f6c5442c-822b-4555-a9a6-89f58860f0c9-559716.png)
 
 <font style="color:rgb(136, 136, 136);">Paxos详细流程</font>
 

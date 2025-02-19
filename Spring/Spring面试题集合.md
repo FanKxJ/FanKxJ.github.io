@@ -5,7 +5,7 @@
 
 在解析@Component注册为BeanDefinition时会调用`<font style="color:#080808;background-color:#c6eecb;">AnnotationBeanNameGenerator.buildDefaultBeanName</font>`
 
-![1699961891863-da50e961-d644-40c7-ae48-7d852742d4ce.png](./img/hAGGsuQMvfnP_pMw/1699961891863-da50e961-d644-40c7-ae48-7d852742d4ce-847712.png)
+![1699961891863-da50e961-d644-40c7-ae48-7d852742d4ce.png](img/hAGGsuQMvfnP_pMw/1699961891863-da50e961-d644-40c7-ae48-7d852742d4ce-847712.png)
 
 # <font style="color:#01B2BC;">单例设计模式与Bean单例</font>
 <font style="color:rgb(18, 18, 18);">Singleton模式主要作用是保证在Java应用程序中，一个Class有且仅有一个实例。它的好处非常显然的，可以避免不必要的重复操作，以及防止踩踏事件。在很多操作中，比如建立目录 数据库连接都需要这样的单线程操作。一些资源管理器常常设计成单例模式。</font>
@@ -14,7 +14,7 @@
 
 **<font style="color:rgb(18, 18, 18);">但是</font>**<font style="color:rgb(18, 18, 18);">，单例设计模式与Bean单例具有一定的区别，主要在于它们运行环境，java单例设计模式的环境是JVM，而Bean单例的环境在于Bean容器。一个Spring程序可以有很多个Bean，但一个Java程序通常有且仅有一个自己的JVM。所以，虽然Spring的Bean单例在一个容器中有且仅有一个，但如果程序具有多个Bean容器，而且都有某个Bean，那么这个Bean在这个程序中并非只有一个。但在实际应用中，如果将对象的生命周期完全交给Spring管理(不在其他地方通过new、反射等方式创建)，其实也能达到单例模式的效果。</font>
 
-![1699964082522-9710065b-58d7-479b-9a7f-ce62b63af7d1.png](./img/hAGGsuQMvfnP_pMw/1699964082522-9710065b-58d7-479b-9a7f-ce62b63af7d1-465947.png)
+![1699964082522-9710065b-58d7-479b-9a7f-ce62b63af7d1.png](img/hAGGsuQMvfnP_pMw/1699964082522-9710065b-58d7-479b-9a7f-ce62b63af7d1-465947.png)
 
 ByType-->byName
 
@@ -204,9 +204,9 @@ private MyBean myBean;
 ## 支持的参数不同
 @Autowired 和 @Resource 在使用时都可以设置参数，但二者支持的参数以及参数的个数完全不同，其中 @Autowired 只支持设置一个 required 的参数，而 @Resource 支持 7 个参数，支持的参数如下图所示：
 
-![1713513602763-e139ca2f-840a-48fe-9b72-bcb23635e992.png](./img/hAGGsuQMvfnP_pMw/1713513602763-e139ca2f-840a-48fe-9b72-bcb23635e992-046864.png)
+![1713513602763-e139ca2f-840a-48fe-9b72-bcb23635e992.png](img/hAGGsuQMvfnP_pMw/1713513602763-e139ca2f-840a-48fe-9b72-bcb23635e992-046864.png)
 
-![1713513555699-e4f935cf-aa03-4a14-a5c5-4d8cd9e0222d.png](./img/hAGGsuQMvfnP_pMw/1713513555699-e4f935cf-aa03-4a14-a5c5-4d8cd9e0222d-221428.png)
+![1713513555699-e4f935cf-aa03-4a14-a5c5-4d8cd9e0222d.png](img/hAGGsuQMvfnP_pMw/1713513555699-e4f935cf-aa03-4a14-a5c5-4d8cd9e0222d-221428.png)
 
 ## 依赖注入的用法支持不同
 @Autowired 和 @Resource 支持依赖注入的用法不同，常见依赖注入有以下 3 种实现：
@@ -263,7 +263,7 @@ public class UserController {
 }
 ```
 
-![1661341346342-317ea714-5825-4dc9-96a0-f0a118158380.png](./img/hAGGsuQMvfnP_pMw/1661341346342-317ea714-5825-4dc9-96a0-f0a118158380-549808.png)
+![1661341346342-317ea714-5825-4dc9-96a0-f0a118158380.png](img/hAGGsuQMvfnP_pMw/1661341346342-317ea714-5825-4dc9-96a0-f0a118158380-549808.png)
 
 ## <font style="color:rgb(24, 24, 24) !important;">总结</font>
 <font style="color:rgb(36, 41, 46);">@Autowired 和 @Resource 都是用来实现依赖注入的注解（在 Spring/Spring Boot 项目中），但二者却有着 4 点不同：</font>
@@ -274,7 +274,7 @@ public class UserController {
 4. <font style="color:rgb(36, 41, 46);">依赖注入的用法支持不同：@Autowired 既支持构造方法注入，又支持属性注入和 Setter 注入，而 @Resource 只支持属性注入和 Setter 注入；</font>
 
 # <font style="color:#01B2BC;">单例Bean是单例模式吗？</font>
-![画板](./img/hAGGsuQMvfnP_pMw/1675060239249-8eec8c4a-fcca-497a-b58e-ac35fec3e647-702011.jpeg)
+![画板](img/hAGGsuQMvfnP_pMw/1675060239249-8eec8c4a-fcca-497a-b58e-ac35fec3e647-702011.jpeg)
 
 <font style="color:rgb(36, 41, 46);">通常来说，单例模式是指在一个JVM中，一个类只能构造出来一个对象，有很多方法来实现单例模式，比如懒汉模式，但是我们通常讲的单例模式有一个前提条件就是规定在一个JVM中，那如果要在两个JVM中保证单例呢？那可能就要用分布式锁这些技术，这里的重点是，我们在讨论单例模式时，是要考虑范围的。</font>
 
@@ -311,7 +311,7 @@ public class AppConfig {
 <font style="color:rgb(36, 41, 46);">以上，Spring容器中将有三个ZhouyuService类型的bean对象，他们的名字不一样。</font>
 
 # <font style="color:#01B2BC;">Bean的实例化和Bean的初始化有什么区别？</font>
-![画板](./img/hAGGsuQMvfnP_pMw/1675061302100-9156da1d-9be2-4595-a11d-d991cbdda832-040394.jpeg)
+![画板](img/hAGGsuQMvfnP_pMw/1675061302100-9156da1d-9be2-4595-a11d-d991cbdda832-040394.jpeg)
 
 <font style="color:rgb(36, 41, 46);">Spring在创建一个Bean对象时，会先创建出来一个Java对象，会通过反射来执行类的构造方法从而得到一个Java对象，而这个过程就是Bean的实例化。</font>
 
@@ -340,7 +340,7 @@ public class AppConfig {
 ```
 
 # <font style="color:#01B2BC;">Spring AOP是如何实现的？它和AspectJ有什么区别？</font>
-![画板](./img/hAGGsuQMvfnP_pMw/1675062313920-030e1318-f0e2-4ac1-a941-dbb3b2a43dbb-689637.jpeg)
+![画板](img/hAGGsuQMvfnP_pMw/1675062313920-030e1318-f0e2-4ac1-a941-dbb3b2a43dbb-689637.jpeg)
 
 <font style="color:rgb(36, 41, 46);">Spring AOP是利用的动态代理机制，如果一个Bean实现了接口，那么就会采用JDK动态代理来生成该接口的代理对象，如果一个Bean没有实现接口，那么就会采用CGLIB来生成当前类的一个代理对象。代理对象的作用就是代理原本的Bean对象，代理对象在执行某个方法时，会在该方法的基础上增加一些切面逻辑，使得我们可以利用AOP来实现一些诸如登录校验、权限控制、日志记录等统一功能。</font>
 
@@ -361,10 +361,10 @@ public class AppConfig {
 
 
 
-![1622966825505-41961ccc-19e0-4f70-8182-e6e3337eb3af.png](./img/hAGGsuQMvfnP_pMw/1622966825505-41961ccc-19e0-4f70-8182-e6e3337eb3af-548669.png)
+![1622966825505-41961ccc-19e0-4f70-8182-e6e3337eb3af.png](img/hAGGsuQMvfnP_pMw/1622966825505-41961ccc-19e0-4f70-8182-e6e3337eb3af-548669.png)
 
 # <font style="color:#01B2BC;">你是如何理解Spring事务的传播机制的？底层是如何实现的？</font>
-![画板](./img/hAGGsuQMvfnP_pMw/1633591520178-89c5ca58-a58a-4584-90b1-473a6c4ad80f-891754.jpeg)
+![画板](img/hAGGsuQMvfnP_pMw/1633591520178-89c5ca58-a58a-4584-90b1-473a6c4ad80f-891754.jpeg)
 
 
 
@@ -411,7 +411,7 @@ public class AppConfig {
 
 <font style="color:rgb(36, 41, 46);">当然其实真正的步骤更加细致，可以看下面的流程图</font>
 
-![1625729452241-4bc1dbb0-a827-49f1-83b8-70e61fd29a65.png](./img/hAGGsuQMvfnP_pMw/1625729452241-4bc1dbb0-a827-49f1-83b8-70e61fd29a65-928321.png)
+![1625729452241-4bc1dbb0-a827-49f1-83b8-70e61fd29a65.png](img/hAGGsuQMvfnP_pMw/1625729452241-4bc1dbb0-a827-49f1-83b8-70e61fd29a65-928321.png)
 
 
 
@@ -438,7 +438,7 @@ public class AppConfig {
 7. <font style="color:rgb(36, 41, 46);">在源码中会更复杂，比如源码中会提供一些模板方法，让子类来实现，比如源码中还涉及到一些BeanFactoryPostProcessor和BeanPostProcessor的注册，Spring的扫描就是通过BenaFactoryPostProcessor来实现的，依赖注入就是通过BeanPostProcessor来实现的</font>
 8. <font style="color:rgb(36, 41, 46);">在Spring启动过程中还会去处理@Import等注解</font>
 
-![1622965863563-ce71fb30-d01f-4829-93a8-a94d784ccc2c.png](./img/hAGGsuQMvfnP_pMw/1622965863563-ce71fb30-d01f-4829-93a8-a94d784ccc2c-480356.png)
+![1622965863563-ce71fb30-d01f-4829-93a8-a94d784ccc2c.png](img/hAGGsuQMvfnP_pMw/1622965863563-ce71fb30-d01f-4829-93a8-a94d784ccc2c-480356.png)
 
 # <font style="color:#01B2BC;">@SpringBootApplication注解有什么用？为什么一定要写它？</font>
 <font style="color:rgb(36, 41, 46);">@SpringBootApplication是一个复合注解：</font>
@@ -486,7 +486,7 @@ public @interface SpringBootApplication {
 
 <font style="color:rgb(36, 41, 46);">内置的这些配置类，也可以叫做自动配置类，我们在依赖了spring-boot-starter-web后，会间接的依赖到spring-boot-autoconfigure这个jar，这个jar中都包含了很多的自动配置类：</font>
 
-![1673876857703-8dd2abe1-6432-4585-b439-9e0233c101ac.png](./img/hAGGsuQMvfnP_pMw/1673876857703-8dd2abe1-6432-4585-b439-9e0233c101ac-069947.png)
+![1673876857703-8dd2abe1-6432-4585-b439-9e0233c101ac.png](img/hAGGsuQMvfnP_pMw/1673876857703-8dd2abe1-6432-4585-b439-9e0233c101ac-069947.png)
 
 
 

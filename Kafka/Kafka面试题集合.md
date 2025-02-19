@@ -8,7 +8,7 @@
 
 消息队列（Message Queue）是一种应用间的通信方式，消息发送后可以立即返回，有消息系统来确保信息的可靠专递，消息发布者只管把消息发布到MQ中而不管谁来取，消息使用者只管从MQ中取消息而不管谁发布的，这样发布者和使用者都不用知道对方的存在。
 
-![1690613122316-4f3b55e0-af5a-4e39-b508-0f30259ac512.png](./img/Ik4qNZwqdCVSBjbV/1690613122316-4f3b55e0-af5a-4e39-b508-0f30259ac512-590787.png)
+![1690613122316-4f3b55e0-af5a-4e39-b508-0f30259ac512.png](img/Ik4qNZwqdCVSBjbV/1690613122316-4f3b55e0-af5a-4e39-b508-0f30259ac512-590787.png)
 
 + <font style="color:rgb(18, 18, 18);">Producer：消息生产者，负责产生和发送消息到 Broker；</font>
 + <font style="color:rgb(18, 18, 18);">Broker：消息处理中心。负责消息存储、确认、重试等，一般其中会包含多个 queue；</font>
@@ -55,7 +55,7 @@ Kafka是一个分布式流处理系统，流处理系统使它可以像消息队
     - **<font style="color:rgb(102, 102, 102);">支持多种客户端语言。Kafka支持Java、.NET、PHP、Python等多种语言。</font>**
 
 ### Kafka与传统消息队列的对比
-![1690613810956-354f0a8a-b2da-4b00-a722-0f3dc016335b.png](./img/Ik4qNZwqdCVSBjbV/1690613810956-354f0a8a-b2da-4b00-a722-0f3dc016335b-550030.png)
+![1690613810956-354f0a8a-b2da-4b00-a722-0f3dc016335b.png](img/Ik4qNZwqdCVSBjbV/1690613810956-354f0a8a-b2da-4b00-a722-0f3dc016335b-550030.png)
 
 各种对比之后，有如下建议：
 
@@ -65,7 +65,7 @@ Kafka是一个分布式流处理系统，流处理系统使它可以像消息队
 + Kafka，如果是大数据领域的实时计算、日志采集等场景，用 Kafka 是业内标准的，绝对没问题，社区活跃度很高，绝对不会黄，何况几乎是全世界这个领域的事实性规范。
 
 ### Kafka的架构设计
-![1704627052660-503dc323-5354-415c-8e98-e870b95d63e3.png](./img/Ik4qNZwqdCVSBjbV/1704627052660-503dc323-5354-415c-8e98-e870b95d63e3-975850.png)
+![1704627052660-503dc323-5354-415c-8e98-e870b95d63e3.png](img/Ik4qNZwqdCVSBjbV/1704627052660-503dc323-5354-415c-8e98-e870b95d63e3-975850.png)
 
 <font style="color:rgb(18, 18, 18);">kafka运行在集群上，集群包含一个或多个服务器。kafka把消息存在topic中，每一条消息包含键值（key），值（value）和时间戳（timestamp）。</font>
 
@@ -86,7 +86,7 @@ Kafka是一个分布式流处理系统，流处理系统使它可以像消息队
 **<font style="color:rgb(18, 18, 18);">Offset </font>**<font style="color:rgb(18, 18, 18);">- 消息在partition中的偏移量。每一条消息在partition都有唯一的偏移量，消息者可以指定偏移量来指定要消费的消息。</font>
 
 ### <font style="color:rgb(18, 18, 18);">工作流程</font>
-![1704628275351-d101b349-c0b4-45d0-adea-e0d378856c59.png](./img/Ik4qNZwqdCVSBjbV/1704628275351-d101b349-c0b4-45d0-adea-e0d378856c59-404103.png)
+![1704628275351-d101b349-c0b4-45d0-adea-e0d378856c59.png](img/Ik4qNZwqdCVSBjbV/1704628275351-d101b349-c0b4-45d0-adea-e0d378856c59-404103.png)
 
 + producer先从zookeeper的 "/brokers/.../state"节点找到该partition的leader
 + producer将消息发送给该leader
@@ -100,14 +100,14 @@ Kafka是一个分布式流处理系统，流处理系统使它可以像消息队
 + topic 是逻辑上的概念，而partition 是物理上的概念，每个partition 对应一个log 文件，该log 文件中存储的就是producer 生产的数据。Producer 生产的数据会被不断追加到该log 文件末端，且每条数据都有自己的offset。消费者组中的每个消费者，都会实时记录自己消费到了哪个offset，以便出错恢复时，从上次的位置继续消费。
 
 ### Kafka的数据模型与消息存储机制
-#### 消息存储结构![1704628728989-5c90216e-e2b7-4c79-8bbe-d2895d31342d.png](./img/Ik4qNZwqdCVSBjbV/1704628728989-5c90216e-e2b7-4c79-8bbe-d2895d31342d-702568.png)
+#### 消息存储结构![1704628728989-5c90216e-e2b7-4c79-8bbe-d2895d31342d.png](img/Ik4qNZwqdCVSBjbV/1704628728989-5c90216e-e2b7-4c79-8bbe-d2895d31342d-702568.png)
 <font style="color:rgb(64, 64, 64);">Kafka 有 Topic 和 Partition 两个概念，一个 Topic 可以有多个 Partition。在实际存储的时候，Topic + Partition 对应一个文件夹，这个文件夹对应的是这个 Partition 的数据。</font>
 
 <font style="color:rgb(64, 64, 64);">在 Kafka 的数据文件目录下，一个 Partition 对应一个唯一的文件夹。如果有 4 个 Topic，每个 Topic 有 5 个 Partition，那么一共会有 4 * 5 = 20 个文件夹。而在 文件夹下，Kafka 消息是采用 Segment File 的存储方式进行存储的。 </font>
 
 <font style="color:rgb(64, 64, 64);">Segment File 的大概意思是：将大文件拆分成小文件来存储，这样一个大文件就变成了一段一段（Segment 段）。这样的好处是 IO 加载速度快，不会有很长的 IO 加载时间。Kafka 的消息存储就采用了这种方式。</font>
 
-![1690640952523-157ab09a-08b9-4fdd-911c-c6ba25898f78.png](./img/Ik4qNZwqdCVSBjbV/1690640952523-157ab09a-08b9-4fdd-911c-c6ba25898f78-179817.png)
+![1690640952523-157ab09a-08b9-4fdd-911c-c6ba25898f78.png](img/Ik4qNZwqdCVSBjbV/1690640952523-157ab09a-08b9-4fdd-911c-c6ba25898f78-179817.png)
 
 <font style="color:rgb(64, 64, 64);">如上图所示，在一个文件夹下的数据会根据 Kafka 的配置拆分成多个小文件。拆分规则可以根据文件大小拆分，也可以根据消息条数拆分，这个是 Kafka 的一个配置，这里不细说。</font>
 
@@ -116,11 +116,11 @@ Kafka是一个分布式流处理系统，流处理系统使它可以像消息队
 #### <font style="color:rgb(64, 64, 64);">索引文件</font>
 <font style="color:rgb(64, 64, 64);">索引文件的命名统一为数字格式，其名称表示 Kafka 消息的偏移量。我们假设索引文件的数字为 N，那么就代表该索引文件存储的第一条 Kafka 消息的偏移量为 N + 1，而上个文件存储的最后一条 Kafka 消息的偏移量为 N（因为 Kafka 是顺序存储的）。例如下图的 368769.index 索引文件，其表示文件存储的第一条 Kafka 消息的偏移量为 368770。而 368769 表示的是 0000.index 这个索引文件的最后一条消息。所以 368769.index 索引文件，其存储的 Kafka 消息偏移量范围为 368769-737337。</font>
 
-![1690641015311-7db1e045-e083-4853-922d-4aff101fb21f.png](./img/Ik4qNZwqdCVSBjbV/1690641015311-7db1e045-e083-4853-922d-4aff101fb21f-078962.png)
+![1690641015311-7db1e045-e083-4853-922d-4aff101fb21f.png](img/Ik4qNZwqdCVSBjbV/1690641015311-7db1e045-e083-4853-922d-4aff101fb21f-078962.png)
 
 <font style="color:rgb(64, 64, 64);">索引文件存储的是简单地索引数据，其格式为：「N,Position」。其中 N 表示索引文件里的第几条消息，而 Position 则表示该条消息在数据文件（Log File）中的物理偏移地址。例如下图中的「3,497」表示：索引文件里的第 3 条消息（即 offset 368772 的消息，368772 = 368769+3），其在数据文件中的物理偏移地址为 497。</font>
 
-![1704632093829-458bd589-8dfa-414f-ac11-5af2a30c5945.png](./img/Ik4qNZwqdCVSBjbV/1704632093829-458bd589-8dfa-414f-ac11-5af2a30c5945-518518.png)
+![1704632093829-458bd589-8dfa-414f-ac11-5af2a30c5945.png](img/Ik4qNZwqdCVSBjbV/1704632093829-458bd589-8dfa-414f-ac11-5af2a30c5945-518518.png)
 
 <font style="color:rgb(64, 64, 64);">其他的以此类推，例如：「8,1686」表示 offset 为 368777 的 Kafka 消息，其在数据文件中的物理偏移地址为 1686。</font>
 
@@ -131,7 +131,7 @@ Kafka是一个分布式流处理系统，流处理系统使它可以像消息队
 
 <font style="color:rgb(64, 64, 64);">数据文件就是所有消息的一个列表，而每条消息都有一个固定的格式，如下图所示。</font>
 
-![1690648401699-24913c41-1d9e-44e9-a4f0-793280a238ce.png](./img/Ik4qNZwqdCVSBjbV/1690648401699-24913c41-1d9e-44e9-a4f0-793280a238ce-199346.png)
+![1690648401699-24913c41-1d9e-44e9-a4f0-793280a238ce.png](img/Ik4qNZwqdCVSBjbV/1690648401699-24913c41-1d9e-44e9-a4f0-793280a238ce-199346.png)
 
 <font style="color:rgb(64, 64, 64);">从上图可以看到 Kafka 消息的物理结构，其包含了 Kafka 消息的 offset 信息、Kafka 消息的大小信息、版本号等等。有了这些信息之后，我们就可以正确地读取到 Kafka 消息的实际内容。</font>
 
@@ -155,7 +155,7 @@ Kafka是一个分布式流处理系统，流处理系统使它可以像消息队
 ### Kafka 副本同步机制
 为保证producer发送的数据，能可靠到指定topic，topic的每个的partition收到 producer发送的数据后，都需要向producer发送 ack（acknowledgement确认收到），如果 producer收到 ack，就会进行下一轮的发送。
 
-![1704896649152-158f7830-bcef-43c3-a6f8-fc8ee5d2ac46.png](./img/Ik4qNZwqdCVSBjbV/1704896649152-158f7830-bcef-43c3-a6f8-fc8ee5d2ac46-638386.png)
+![1704896649152-158f7830-bcef-43c3-a6f8-fc8ee5d2ac46.png](img/Ik4qNZwqdCVSBjbV/1704896649152-158f7830-bcef-43c3-a6f8-fc8ee5d2ac46-638386.png)
 
 #### <font style="color:rgb(37, 41, 51);">ACKS 机制</font>
 <font style="color:rgb(55, 65, 81);">在 Kafka 中，消息的 ACK（Acknowledgment，确认）机制与生产者的 </font>**acks**<font style="color:rgb(55, 65, 81);"> 配置有关。</font>**acks**<font style="color:rgb(55, 65, 81);"> 配置表示生产者在接收到消息后等待副本同步确认的方式，具体取值有：</font>
@@ -203,19 +203,19 @@ Leader维护了一个动态的in-sync replica set (ISR-同步副本列表)，意
 
 :::
 
-![1705063082361-fed2437f-4f0e-4db1-b579-07f43c8f942d.png](./img/Ik4qNZwqdCVSBjbV/1705063082361-fed2437f-4f0e-4db1-b579-07f43c8f942d-691807.png)
+![1705063082361-fed2437f-4f0e-4db1-b579-07f43c8f942d.png](img/Ik4qNZwqdCVSBjbV/1705063082361-fed2437f-4f0e-4db1-b579-07f43c8f942d-691807.png)
 
 + **HW** （High Watermark）俗称高水位，它标识了一个特定的消息偏移量（offset），消费者只能拉取到这个offset之前的消息，对于同一个副本对象而言，其 HW 值不会大于 LEO 值。小于等于 HW 值的所有消息都被认为是“已备份”的（replicated） 。**所有分区副本中消息偏移量最小值。**
 + **LEO**（Log End Offset），即日志末端位移(log end offset)，记录了该副本底层日志(log)中下一条消息的位移值。**注意是下一条消息！也就是说**，如果 LEO =8，那么表示该副本保存了 8 条消息，位移值范围是[0, 7]。LEO 的大小相当于当前日志分区中最后一条消息的 offset 值加1，分区 ISR 集合中的每个副本都会维护自身的 LEO，而 **ISR 集合中最小的 LEO 即为分区的 HW**，**对消费者而言只能消费 HW 之前的消息**。
 
 #### 针对不同的产生原因，解决方案不同：
-+ 当服务出现故障时：如果是 Follower 发生故障，这不会影响消息写入，只不过是少了一个备份而已。处理 相对简单一点。Kafka 会做如下处理：  ![1705064485653-5132d45a-abd0-4040-b6d2-86a034367248.png](./img/Ik4qNZwqdCVSBjbV/1705064485653-5132d45a-abd0-4040-b6d2-86a034367248-092022.png)
++ 当服务出现故障时：如果是 Follower 发生故障，这不会影响消息写入，只不过是少了一个备份而已。处理 相对简单一点。Kafka 会做如下处理：  ![1705064485653-5132d45a-abd0-4040-b6d2-86a034367248.png](img/Ik4qNZwqdCVSBjbV/1705064485653-5132d45a-abd0-4040-b6d2-86a034367248-092022.png)
     - 将故障的 Follower 节点临时踢出 ISR 集合。而其他 Leader 和 Follower 继续正常接收消息。 
     - 出现故障的 Follower 节点恢复后，不会立即加入 ISR 集合。该 Follower 节点会读取本地记录的上一次的 HW，将自己的日志中高于 HW 的部分信息全部删除掉，然后从 HW 开始，向 Leader 进行消息同步。 
     - 等到该 Follower 的 LEO 大于等于整个 Partiton 的 HW 后，就重新加入到 ISR 集合中。这也就是说这个 Follower 的消息进度追上了 Leader。  
 +  如果是 Leader 节点出现故障，Kafka 为了保证消息的一致性，处理就会相对复杂一点。 
 
-![1705064515417-5c004a06-0492-4988-bf65-505352834d0c.png](./img/Ik4qNZwqdCVSBjbV/1705064515417-5c004a06-0492-4988-bf65-505352834d0c-218497.png)
+![1705064515417-5c004a06-0492-4988-bf65-505352834d0c.png](img/Ik4qNZwqdCVSBjbV/1705064515417-5c004a06-0492-4988-bf65-505352834d0c-218497.png)
 
     - Leader 发生故障，会从 ISR 中进行选举，将一个原本是 Follower 的 Partition提升为新的 Leader。这时， 消息有可能没有完成同步，所以新的 Leader 的LEO 会低于之前 Leader 的 LEO。 
     - Kafka 中的消息都只能以 Leader 中的备份为准。其他 Follower 会将各自的Log 文件中高于 HW 的部分全部 清理掉，然后从新的 Leader 中同步数据。 

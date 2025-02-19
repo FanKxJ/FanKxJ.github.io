@@ -6,14 +6,14 @@
 
 <font style="color:rgb(18, 18, 18);">比如：如果一个队列绑定到交换机要求路由键为“key”，则只转发RoutingKey标记为“key”的消息，不会转发"key1"，也不会转发“key.1”等等。它是完全匹配、单播的模式</font>
 
-![画板](./img/VJvR0uyixE6Gbaft/1679310864234-c192ec99-527b-4817-ae45-1a7c6b4f03c9-422116.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1679310864234-c192ec99-527b-4817-ae45-1a7c6b4f03c9-422116.jpeg)
 
 	<font style="color:rgb(18, 18, 18);">同一个key可以绑定多个queue队列；当匹配到key1时，queue1和queue2都可以收到消息</font>
 
 ## <font style="color:rgb(51, 51, 51);">fanout(</font>**扇出交换机，广播**<font style="color:rgb(51, 51, 51);">)</font>
 <font style="color:rgb(18, 18, 18);">Fanout，扇出类型交换机，此种交换机，会将消息分发给所有绑定了此交换机的队列，此时RoutingKey参数无效。</font>
 
-![画板](./img/VJvR0uyixE6Gbaft/1679299526347-dc96e5ca-a196-4ebe-8f24-63c276f8cab8-176323.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1679299526347-dc96e5ca-a196-4ebe-8f24-63c276f8cab8-176323.jpeg)
 
 <font style="color:rgb(18, 18, 18);">fanout类型交换机下发送消息一条，无论RoutingKey是什么，queue1,queue2,queue3,queue4都可以收到消息</font>
 
@@ -24,7 +24,7 @@
 2. <font style="color:rgb(51, 51, 51);">"*"：代表一个部分</font>
 3. <font style="color:rgb(51, 51, 51);">"#"：代表0个或多个部分(</font><font style="color:rgb(18, 18, 18);">如果绑定的路由键为 "#" 时，则接受所有消息，因为路由键所有都匹配</font><font style="color:rgb(51, 51, 51);">)</font>
 
-![画板](./img/VJvR0uyixE6Gbaft/1704200146344-220bdcb8-9ba6-45a0-81ce-2f2e70431fd8-851068.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1704200146344-220bdcb8-9ba6-45a0-81ce-2f2e70431fd8-851068.jpeg)
 
 <font style="color:rgb(51, 51, 51);">然后发送一条信息，routingkey为"key1.key2.key3.key4"，那么根据"."将这个路由键分为了4个部分，此条路由键，将会匹配：</font>
 
@@ -45,7 +45,7 @@
 1. <font style="color:rgb(0, 0, 0);">x-match = all ：表示所有的键值对都匹配才能接受到消息</font>
 2. <font style="color:rgb(0, 0, 0);">x-match = any ：表示只要有键值对匹配就能接受到消息</font>
 
-![画板](./img/VJvR0uyixE6Gbaft/1704200149544-03424a81-6f57-4765-b34d-ae3f276a48d0-179958.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1704200149544-03424a81-6f57-4765-b34d-ae3f276a48d0-179958.jpeg)
 
 发送消息时间，如果其他参数信息是{ "name":"xiaomingXX", "sex":"男" }，因为queue2的x-match是any，只需要有一个键值对匹配所以就能接收到消息，所以queue2可以接收到消息；queue1的x-match是all，需要所有的键值对都匹配才能接收到消息，所以此时queue1接收不到消息
 
@@ -54,7 +54,7 @@
 
 <font style="color:rgb(55, 65, 81);">以下是 RabbitMQ 的基本架构设计：</font>
 
-![1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa.png](./img/VJvR0uyixE6Gbaft/1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa-098499.png)
+![1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa.png](img/VJvR0uyixE6Gbaft/1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa-098499.png)
 
 
 
@@ -77,7 +77,7 @@
 ## 丢失原因分析
 观察整个 RabbitMQ 消息发送过程：
 
-![1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa.png](./img/VJvR0uyixE6Gbaft/1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa-266834.png)
+![1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa.png](img/VJvR0uyixE6Gbaft/1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa-266834.png)
 
 从上述流程我们可以得知：消息从生产者到达消费者，经过两次网络传输，并且在 RabbitMQ 服务器中进行路由。
 
@@ -127,9 +127,9 @@ ACK 事务机制用于确保消息被正确消费。当消息被消费者成功�
 + ACK 机制可以确保消息不会被重复处理，但如果消费者发生异常或者未发送 ACK，消息可能会被重复投递。
 
 # <font style="color:#01B2BC;">RabbitMQ中如何解决消息堆积问题</font>
-### ![1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa.png](./img/VJvR0uyixE6Gbaft/1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa-935694.png)
+### ![1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa.png](img/VJvR0uyixE6Gbaft/1703762138526-20dbcc46-ede2-4c9c-b623-806f0ede58aa-935694.png)
 ## <font style="color:rgb(31, 41, 55);">消息堆积原因</font>
-![画板](./img/VJvR0uyixE6Gbaft/1704289639905-c57088e7-c9d1-4cf0-bcc6-0538ca0d69a6-612994.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1704289639905-c57088e7-c9d1-4cf0-bcc6-0538ca0d69a6-612994.jpeg)
 
 ## <font style="color:rgb(31, 41, 55);">解决方案</font>
 1. **<font style="color:rgb(31, 41, 55);">消费者处理消息的速度太慢</font>**
@@ -163,7 +163,7 @@ ACK 事务机制用于确保消息被正确消费。当消息被消费者成功�
 2. <font style="color:rgb(48, 48, 48);">MQ：在消费者消费完准备响应 ack 消息消费成功时，MQ 突然挂了，导致 MQ 以为消费者还未消费该条数据，MQ 恢复后再次推送了该条消息，导致了重复消费。</font>
 3. <font style="color:rgb(48, 48, 48);">消费者：消费者已经消费完消息，正准备但是还未响应给ack消息到时，此时消费者挂了，服务重启后 MQ 以为消费者还没有消费该消息，再次推送了该条消息。</font>
 
-![画板](./img/VJvR0uyixE6Gbaft/1680176909097-ddb1ac6a-209a-44dd-be1d-6d242a5171bd-090204.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1680176909097-ddb1ac6a-209a-44dd-be1d-6d242a5171bd-090204.jpeg)
 
 ## 解决方案
 ## 使用数据库唯一键约束
@@ -175,7 +175,7 @@ ACK 事务机制用于确保消息被正确消费。当消息被消费者成功�
 缺点：如果说更新字段比较多，并且更新场景比较多，可能会导致数据库字段增加并且还有可能出现多条消息同时在队列中此时他们修改字段版本号一致，排在后续的消息无法被消费
 
 ## 简单的消息去重，插入消费记录，增加数据库判断
-![画板](./img/VJvR0uyixE6Gbaft/1680245653663-7f5ddc76-83cf-4258-992c-f4f6d2f8fee3-493854.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1680245653663-7f5ddc76-83cf-4258-992c-f4f6d2f8fee3-493854.jpeg)
 
 优点：很多场景下的确能起到不错的效果
 
@@ -185,12 +185,12 @@ ACK 事务机制用于确保消息被正确消费。当消息被消费者成功�
 2. 那么就会穿透掉检查的挡板，最后导致重复的消息消费逻辑进入到非幂等安全的业务代码中，从而引发重复消费的问题
 
 ## 并发消息去重<font style="color:rgb(34, 34, 34);background-color:rgb(248, 248, 248);">基于消息幂等表</font>
-![画板](./img/VJvR0uyixE6Gbaft/1680264333510-7b9563f6-dc90-4975-9892-611114e3d25b-809920.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1680264333510-7b9563f6-dc90-4975-9892-611114e3d25b-809920.jpeg)
 
 + 缺点：如果说第一次消息投递异常没有消费成功，并且没有将消息状态给置为成功或者没有删除消息表记录，此时延时消费每次执行下列都是一直处于消费中，最后消费就会被视为消费失败而被投递到死信Topic中
 + 方案：插入的消息表必须要带一个最长消费过期时间，例如10分钟
 
-![画板](./img/VJvR0uyixE6Gbaft/1680264352458-cc74e8ee-5b40-432d-94c4-ba354abcf771-015940.jpeg)
+![画板](img/VJvR0uyixE6Gbaft/1680264352458-cc74e8ee-5b40-432d-94c4-ba354abcf771-015940.jpeg)
 
 + 上述方案只需要一个存储的中心媒介，那我们可以选择更灵活的存储中心媒介，比如Redis。使用Redis有两个好处：
     - 性能上损耗更低

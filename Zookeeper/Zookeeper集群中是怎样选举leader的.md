@@ -19,7 +19,7 @@
 
 <font style="color:rgb(18, 18, 18);"></font>
 
-![1693810241595-e55a8ad8-b1aa-45a8-9444-077cb201ba85.png](./img/GqJblNIa8sO4xoZP/1693810241595-e55a8ad8-b1aa-45a8-9444-077cb201ba85-177267.png)
+![1693810241595-e55a8ad8-b1aa-45a8-9444-077cb201ba85.png](img/GqJblNIa8sO4xoZP/1693810241595-e55a8ad8-b1aa-45a8-9444-077cb201ba85-177267.png)
 
 <font style="color:rgb(18, 18, 18);"></font>
 
@@ -40,7 +40,7 @@
 </font>
 
 ## <font style="color:rgb(18, 18, 18);">非第一次启动Leader选举</font>
-![1693810240917-33b74676-8224-4a21-8589-20be50958c8d.webp](./img/GqJblNIa8sO4xoZP/1693810240917-33b74676-8224-4a21-8589-20be50958c8d-266965.webp)
+![1693810240917-33b74676-8224-4a21-8589-20be50958c8d.webp](img/GqJblNIa8sO4xoZP/1693810240917-33b74676-8224-4a21-8589-20be50958c8d-266965.webp)
 
 <font style="color:rgb(18, 18, 18);">  
 </font>

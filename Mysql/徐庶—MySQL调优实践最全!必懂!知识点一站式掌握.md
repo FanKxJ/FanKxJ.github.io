@@ -1,7 +1,7 @@
 # 徐庶—MySQL调优实践最全!必懂!知识点一站式掌握
 
 # <font style="color:#FFFFFF;background-color:#E4495B;">一.索引</font>
-## ![1685538843144-1b47126c-c052-406c-b297-d4d93d9ba55c.jpeg](./img/4_xIH9kdrSNB7IMN/1685538843144-1b47126c-c052-406c-b297-d4d93d9ba55c-729137.jpeg) 
+## ![1685538843144-1b47126c-c052-406c-b297-d4d93d9ba55c.jpeg](img/4_xIH9kdrSNB7IMN/1685538843144-1b47126c-c052-406c-b297-d4d93d9ba55c-729137.jpeg) 
 ## <font style="color:rgb(255, 255, 255);background-color:rgb(239, 112, 96);">什么是索引</font>
 :::tips
 💡**什么是索引？**
@@ -44,52 +44,52 @@
 
 
 
-#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](./img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)二叉树：
+#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)二叉树：
 <font style="color:rgb(18, 18, 18);">特点：每个节点最多有两个子节,大在右，小在左  ，数据随机性情况下树杈越明显。</font>
 
 <font style="color:rgb(18, 18, 18);"></font>
 
-![1685362290857-b5db6cfb-1ed2-4dff-a048-54e65bbbfc80.png](./img/4_xIH9kdrSNB7IMN/1685362290857-b5db6cfb-1ed2-4dff-a048-54e65bbbfc80-921174.png)![1686127709826-a8d093b1-3e0a-47f2-aee2-cd0144933cf3.png](./img/4_xIH9kdrSNB7IMN/1686127709826-a8d093b1-3e0a-47f2-aee2-cd0144933cf3-504747.png)
+![1685362290857-b5db6cfb-1ed2-4dff-a048-54e65bbbfc80.png](img/4_xIH9kdrSNB7IMN/1685362290857-b5db6cfb-1ed2-4dff-a048-54e65bbbfc80-921174.png)![1686127709826-a8d093b1-3e0a-47f2-aee2-cd0144933cf3.png](img/4_xIH9kdrSNB7IMN/1686127709826-a8d093b1-3e0a-47f2-aee2-cd0144933cf3-504747.png)
 
 如果数据是按顺序依次进入：
 
 树的高度则会很高<font style="color:rgb(77, 77, 77);">（就是一个链表结构）</font>， <font style="color:rgb(77, 77, 77);">此时元素的查找效率就等于链表查询O(n)，</font>数据检索效率将极为低下。
 
-![1685362410423-9f0d2fd7-c4b8-49d0-880a-d7e9e4ecbc80.png](./img/4_xIH9kdrSNB7IMN/1685362410423-9f0d2fd7-c4b8-49d0-880a-d7e9e4ecbc80-329555.png)![1686127737896-f85e0f98-5f64-4839-b590-2ceaca2c7fbc.png](./img/4_xIH9kdrSNB7IMN/1686127737896-f85e0f98-5f64-4839-b590-2ceaca2c7fbc-923096.png)
+![1685362410423-9f0d2fd7-c4b8-49d0-880a-d7e9e4ecbc80.png](img/4_xIH9kdrSNB7IMN/1685362410423-9f0d2fd7-c4b8-49d0-880a-d7e9e4ecbc80-329555.png)![1686127737896-f85e0f98-5f64-4839-b590-2ceaca2c7fbc.png](img/4_xIH9kdrSNB7IMN/1686127737896-f85e0f98-5f64-4839-b590-2ceaca2c7fbc-923096.png)
 
 <font style="color:rgb(77, 77, 77);"> 极端的情况下 就是一个链表结构（如下图），此时元素的查找效率就等于链表查询O(n)。</font>
 
-#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](./img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)红黑树（平衡二叉树）
+#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)红黑树（平衡二叉树）
 <font style="color:rgb(77, 77, 77);">虽通过自旋平衡，子节点会自动分叉为2个分支，从而减少树的高度，当数据有序插入时比二叉树数据检索性能更佳.     </font>
 
 <font style="color:rgb(77, 77, 77);">但是如果 数据量过大，</font><font style="color:rgb(37, 41, 51);">节点个数就越多，树高度也会增高（也就是树的深度越深），增加磁盘I/O次数，影响查询效率。</font>
 
 
 
-![1685364260410-899f3ac6-b8b2-4b91-8798-6c3ae0650ecf.gif](./img/4_xIH9kdrSNB7IMN/1685364260410-899f3ac6-b8b2-4b91-8798-6c3ae0650ecf-811185.gif)
+![1685364260410-899f3ac6-b8b2-4b91-8798-6c3ae0650ecf.gif](img/4_xIH9kdrSNB7IMN/1685364260410-899f3ac6-b8b2-4b91-8798-6c3ae0650ecf-811185.gif)
 
 
 
-![1685370727244-9917f06b-5416-4e4c-b402-3b8f22719425.png](./img/4_xIH9kdrSNB7IMN/1685370727244-9917f06b-5416-4e4c-b402-3b8f22719425-524991.png)
+![1685370727244-9917f06b-5416-4e4c-b402-3b8f22719425.png](img/4_xIH9kdrSNB7IMN/1685370727244-9917f06b-5416-4e4c-b402-3b8f22719425-524991.png)
 
-#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](./img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)B-树 
+#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)B-树 
 <font style="color:rgb(77, 77, 77);"> </font>
 
 B树的出现可以解决树高度的问题。之所以是B树，而并不是名称中"xxx二叉树"，就是它不再限制一个父节点中只能有两个子节点，而是允许 M 个子节点（M > 2）。不仅如此，B树的一个节点可以存储多个元素，相比较于前面的那些二叉树数据结构又将整体的树高度降低了。
 
-![1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06.png](./img/4_xIH9kdrSNB7IMN/1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06-766071.png)
+![1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06.png](img/4_xIH9kdrSNB7IMN/1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06-766071.png)
 
 <font style="color:rgb(37, 41, 51);">B 树的节点可以包含有多个字节点，所以 </font>**<font style="color:rgb(37, 41, 51);">B树是一棵多叉树</font>**<font style="color:rgb(37, 41, 51);">，它的每一个节点包含的最多子节点数量的称为B树的阶。如下图是一颗3阶的B树。</font>
 
 
 
-![1686139404742-42dce20d-7573-4691-a523-c25726a99255.gif](./img/4_xIH9kdrSNB7IMN/1686139404742-42dce20d-7573-4691-a523-c25726a99255-519237.gif)
+![1686139404742-42dce20d-7573-4691-a523-c25726a99255.gif](img/4_xIH9kdrSNB7IMN/1686139404742-42dce20d-7573-4691-a523-c25726a99255-519237.gif)
 
 当一颗3阶的B树查找 7这个的元素时的流程是怎么样的？
 
 先从根节点出发 ，判断 7在4和8之间，根据P2存储指针6的节点，判断7大于6   最后指针找到叶子节点。也就找到有匹配7的键值。
 
-![1686140116670-212f89fe-6c14-41db-afa7-b95a9ab3e1f8.gif](./img/4_xIH9kdrSNB7IMN/1686140116670-212f89fe-6c14-41db-afa7-b95a9ab3e1f8-925036.gif)
+![1686140116670-212f89fe-6c14-41db-afa7-b95a9ab3e1f8.gif](img/4_xIH9kdrSNB7IMN/1686140116670-212f89fe-6c14-41db-afa7-b95a9ab3e1f8-925036.gif)
 
 可以发现一颗3阶的B树在查找叶子节点时，由于树高度只有 3，所以查找过程最多只需要3次的磁盘I/O操作。
 
@@ -105,21 +105,21 @@ B树的出现可以解决树高度的问题。之所以是B树，而并不是名
 
  
 
-#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](./img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)B+tree索引 
+#### ![1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00.png](img/4_xIH9kdrSNB7IMN/1685543364763-54cb85a5-a824-4b46-b980-0dc0245b2c00-806082.png)B+tree索引 
 在MySQL中为什么会选用B+tree做索引结构呢？
 
 
 
 B+tree 是在B树基础上的一种优化，其更适合做存储索引结构。在 B+tree 中，非叶子节点上仅存储键值，不存储数据；而所有数据记录均存储在叶子节点上，并且数据是按照顺序排列的。此外在 B+tree 中各个数据页之间是通过双向链表连接的。B+tree 的结构图如下：
 
-![1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b.webp](./img/4_xIH9kdrSNB7IMN/1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b-304166.webp)
+![1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b.webp](img/4_xIH9kdrSNB7IMN/1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b-304166.webp)
 
 
 
 ### B树和B+树的区别，Mysql为什么要选择B+树作为默认索引的数据结构
 
 
-![1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b.webp](./img/4_xIH9kdrSNB7IMN/1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b-304166.webp)![1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06.png](./img/4_xIH9kdrSNB7IMN/1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06-766071.png)
+![1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b.webp](img/4_xIH9kdrSNB7IMN/1686137513424-bd04201b-2fbb-46e8-971b-612c8cef357b-304166.webp)![1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06.png](img/4_xIH9kdrSNB7IMN/1685543860080-820cb15f-005e-4c95-9342-1b9ee212cc06-766071.png)
 
 B+tree 结构实现数据索引具有如下优点：
 
@@ -140,11 +140,11 @@ c. 数据页之间、数据记录之间都是通过链表链接的，有了这�
 
 <font style="color:rgb(0, 0, 0);">虽然可以使用sql语句在InnoDB显示声明Hash索引，但是其实是不生效的</font>
 
-![1686060089719-06591684-0765-4523-89c0-9aada91dc1b3.png](./img/4_xIH9kdrSNB7IMN/1686060089719-06591684-0765-4523-89c0-9aada91dc1b3-441620.png)
+![1686060089719-06591684-0765-4523-89c0-9aada91dc1b3.png](img/4_xIH9kdrSNB7IMN/1686060089719-06591684-0765-4523-89c0-9aada91dc1b3-441620.png)
 
 <font style="color:rgb(0, 0, 0);">对name字段建立Hash索引，但是通过</font><font style="color:rgb(239, 112, 96);">show index from 表名</font><font style="color:rgb(0, 0, 0);">就会发现实际还是B+树</font>
 
-![1686060089699-2d9db32b-569d-4d7d-a2ae-05634adb429c.png](./img/4_xIH9kdrSNB7IMN/1686060089699-2d9db32b-569d-4d7d-a2ae-05634adb429c-325297.png)
+![1686060089699-2d9db32b-569d-4d7d-a2ae-05634adb429c.png](img/4_xIH9kdrSNB7IMN/1686060089699-2d9db32b-569d-4d7d-a2ae-05634adb429c-325297.png)
 
 <font style="color:rgb(0, 0, 0);">在存储引擎中，Memory引擎支持Hash索引</font>
 
@@ -152,11 +152,11 @@ c. 数据页之间、数据记录之间都是通过链表链接的，有了这�
 
 <font style="color:rgb(0, 0, 0);">假设现在</font><font style="color:rgb(239, 112, 96);">user</font><font style="color:rgb(0, 0, 0);">表用Memory存储引擎，对name字段建立Hash索引，表中插入三条数据</font>
 
-![1686060089667-49ca8a48-b8f3-49a2-9e04-0161ffcae253.png](./img/4_xIH9kdrSNB7IMN/1686060089667-49ca8a48-b8f3-49a2-9e04-0161ffcae253-113245.png)
+![1686060089667-49ca8a48-b8f3-49a2-9e04-0161ffcae253.png](img/4_xIH9kdrSNB7IMN/1686060089667-49ca8a48-b8f3-49a2-9e04-0161ffcae253-113245.png)
 
 <font style="color:rgb(0, 0, 0);">Hash索引会对索引列name的值进行Hash计算，然后找到对应的槽下面，如下图所示</font>
 
-![1686060089633-aa383d2c-2224-40d9-bfab-b2de18802fbd.png](./img/4_xIH9kdrSNB7IMN/1686060089633-aa383d2c-2224-40d9-bfab-b2de18802fbd-653337.png)
+![1686060089633-aa383d2c-2224-40d9-bfab-b2de18802fbd.png](img/4_xIH9kdrSNB7IMN/1686060089633-aa383d2c-2224-40d9-bfab-b2de18802fbd-653337.png)
 
 <font style="color:rgb(0, 0, 0);">当遇到name字段的Hash值相同时，也就是Hash冲突，就会形成一个链表，比如有name=张三有两条数据，就会形成一个链表。</font>
 
@@ -172,9 +172,9 @@ c. 数据页之间、数据记录之间都是通过链表链接的，有了这�
 
 按物理存储分类：InnoDB的存储方式是聚集索引，MyISAM的存储方式是非聚集索引。
 
-![1686226684967-bf5d2cbf-ccfb-4640-a1f4-edb242add589.png](./img/4_xIH9kdrSNB7IMN/1686226684967-bf5d2cbf-ccfb-4640-a1f4-edb242add589-325790.png)
+![1686226684967-bf5d2cbf-ccfb-4640-a1f4-edb242add589.png](img/4_xIH9kdrSNB7IMN/1686226684967-bf5d2cbf-ccfb-4640-a1f4-edb242add589-325790.png)
 
-![1686226761004-b46d21b0-c48f-4010-a246-b47b1f28c143.png](./img/4_xIH9kdrSNB7IMN/1686226761004-b46d21b0-c48f-4010-a246-b47b1f28c143-083668.png)
+![1686226761004-b46d21b0-c48f-4010-a246-b47b1f28c143.png](img/4_xIH9kdrSNB7IMN/1686226761004-b46d21b0-c48f-4010-a246-b47b1f28c143-083668.png)
 
 #### 聚簇索引
 
@@ -219,7 +219,7 @@ MySQL会分别创建主键id的聚簇索引和age的二级索引:
 
 <font style="color:rgb(0, 0, 0);"></font>
 
-![1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc.webp](./img/4_xIH9kdrSNB7IMN/1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc-573422.webp)
+![1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc.webp](img/4_xIH9kdrSNB7IMN/1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc-573422.webp)
 
 <font style="color:rgb(18, 18, 18);">在MySQL中主键索引的叶子节点存的是整行数据，而二级索引叶子节点内容是主键的值.</font>
 
@@ -236,7 +236,7 @@ MySQL会分别创建主键id的聚簇索引和age的二级索引:
 SELECT * FROM users WHERE age=35;
 ```
 
-![1686228330541-4a9c644c-2572-4b8a-b2e1-c9dbaa37dfb5.webp](./img/4_xIH9kdrSNB7IMN/1686228330541-4a9c644c-2572-4b8a-b2e1-c9dbaa37dfb5-228920.webp)
+![1686228330541-4a9c644c-2572-4b8a-b2e1-c9dbaa37dfb5.webp](img/4_xIH9kdrSNB7IMN/1686228330541-4a9c644c-2572-4b8a-b2e1-c9dbaa37dfb5-228920.webp)
 
 <font style="color:rgb(0, 0, 0);">由于查询条件是</font><font style="color:rgb(239, 112, 96);">name = '赵六'</font><font style="color:rgb(0, 0, 0);">，所以会走name索引</font>
 
@@ -260,7 +260,7 @@ select id from `user` where age = 35;
 
 <font style="color:rgb(0, 0, 0);">这次查询字段从</font><font style="color:rgb(239, 112, 96);">select *</font><font style="color:rgb(0, 0, 0);">变成</font><font style="color:rgb(239, 112, 96);">select id</font><font style="color:rgb(0, 0, 0);">，查询条件不变，所以也会走age索引</font>
 
-![1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc.webp](./img/4_xIH9kdrSNB7IMN/1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc-573422.webp)
+![1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc.webp](img/4_xIH9kdrSNB7IMN/1686228312805-5256f72b-5055-4545-963a-95ce7aa145dc-573422.webp)
 
 <font style="color:rgb(0, 0, 0);">所以还是跟前面一样了，先从索引页中查出来</font><font style="color:rgb(239, 112, 96);">age = 35;</font><font style="color:rgb(0, 0, 0);">对应的主键id之后，惊讶的发现，sql中需要查询字段的id值已经查到了，那次此时压根就不需要回表了，已经查到id了，还回什么表。</font>
 
@@ -279,7 +279,7 @@ ALTER TABLE `test`.`user`  ADD INDEX(`name`);
 
 <font style="color:rgb(0, 0, 0);">此时如果往表中插入三条数据，那么name索引的叶子节点存的数据就如下图所示</font>
 
-![1686060426659-e2031309-aa84-4688-bfb7-21a45da14d6e.png](./img/4_xIH9kdrSNB7IMN/1686060426659-e2031309-aa84-4688-bfb7-21a45da14d6e-392975.png)
+![1686060426659-e2031309-aa84-4688-bfb7-21a45da14d6e.png](img/4_xIH9kdrSNB7IMN/1686060426659-e2031309-aa84-4688-bfb7-21a45da14d6e-392975.png)
 
 **<font style="color:rgb(0, 0, 0);">mysql会根据name字段的值进行排序，这里我假设张三排在李四前面，当索引列的值相同时，就会根据id排序，所以索引实际上已经根据索引列的值排好序了。</font>**
 
@@ -287,17 +287,17 @@ ALTER TABLE `test`.`user`  ADD INDEX(`name`);
 
 <font style="color:rgb(0, 0, 0);">答案是可以的，并且mysql支持很多种排序规则，我们在建数据库或者是建表的时候等都可以指定排序规则，</font>**<font style="color:rgb(0, 0, 0);">并且后面文章涉及到的字符串排序都是我随便排的，实际情况可能不一样</font>**<font style="color:rgb(0, 0, 0);">。</font>
 
-![1686060426660-da7319da-f0e5-412f-8e10-f26f7509594f.png](./img/4_xIH9kdrSNB7IMN/1686060426660-da7319da-f0e5-412f-8e10-f26f7509594f-493767.png)
+![1686060426660-da7319da-f0e5-412f-8e10-f26f7509594f.png](img/4_xIH9kdrSNB7IMN/1686060426660-da7319da-f0e5-412f-8e10-f26f7509594f-493767.png)
 
 <font style="color:rgb(0, 0, 0);">对于单个索引列数据查找也是跟前面说的聚簇索引一样，也会对数据分组，之后可以根据二分查找在单个索引列来查找数据。</font>
 
 <font style="color:rgb(0, 0, 0);">当数据不断增多，一个索引页存储不下数据的时候，也会用多个索引页来存储，并且索引页直接也会形成双向链表</font>
 
-![1686060426657-4914f989-c010-4f3d-8a7e-72da98624742.png](./img/4_xIH9kdrSNB7IMN/1686060426657-4914f989-c010-4f3d-8a7e-72da98624742-697704.png)
+![1686060426657-4914f989-c010-4f3d-8a7e-72da98624742.png](img/4_xIH9kdrSNB7IMN/1686060426657-4914f989-c010-4f3d-8a7e-72da98624742-697704.png)
 
 <font style="color:rgb(0, 0, 0);">当索引页不断增多是，为了方便在不同索引页中查找数据，也就会抽取一个索引页，除了存页中id，同时也会存储这个id对应的索引列的值</font>
 
-![1686060426665-08e361ba-a9e5-4d72-b8fe-02dca7420d63.png](./img/4_xIH9kdrSNB7IMN/1686060426665-08e361ba-a9e5-4d72-b8fe-02dca7420d63-095306.png)
+![1686060426665-08e361ba-a9e5-4d72-b8fe-02dca7420d63.png](img/4_xIH9kdrSNB7IMN/1686060426665-08e361ba-a9e5-4d72-b8fe-02dca7420d63-095306.png)
 
 <font style="color:rgb(0, 0, 0);">当数据越来越多越来越多，还会抽取，也会形成三层的一个B+树，这里我就不画了。</font>
 
@@ -310,7 +310,7 @@ ALTER TABLE `test`.`user` ADD INDEX(`name`, `age`, `id`);
 
 <font style="color:rgb(0, 0, 0);">比如，在name和age上建立一个联合索引，此时单个索引页就如图所示</font>
 
-![1686060426681-ac222f22-f3eb-4b61-a8bc-74b73e26c748.png](./img/4_xIH9kdrSNB7IMN/1686060426681-ac222f22-f3eb-4b61-a8bc-74b73e26c748-243458.png)
+![1686060426681-ac222f22-f3eb-4b61-a8bc-74b73e26c748.png](img/4_xIH9kdrSNB7IMN/1686060426681-ac222f22-f3eb-4b61-a8bc-74b73e26c748-243458.png)
 
 <font style="color:rgb(85, 86, 102);"> </font>
 
@@ -320,7 +320,7 @@ ALTER TABLE `test`.`user` ADD INDEX(`name`, `age`, `id`);
 
 <font style="color:rgb(0, 0, 0);">最后形成的B+树简化为如下图</font>
 
-![1686060427050-8ccf5c09-a630-4074-a4de-91e2ee228f68.png](./img/4_xIH9kdrSNB7IMN/1686060427050-8ccf5c09-a630-4074-a4de-91e2ee228f68-268792.png)
+![1686060427050-8ccf5c09-a630-4074-a4de-91e2ee228f68.png](img/4_xIH9kdrSNB7IMN/1686060427050-8ccf5c09-a630-4074-a4de-91e2ee228f68-268792.png)
 
 ### <font style="color:rgb(79, 79, 79);">最左前缀原则</font>
 <font style="color:rgb(79, 79, 79);">顾名思义是最左优先，以最左边的为起点任何连续的索引都能匹配上。</font>
@@ -373,24 +373,24 @@ ALTER TABLE `test`.`user`  ADD INDEX (`name`,`age`)
 ```
 
 不使用索引下推实现  
-![1684911293119-d8ab199d-b383-4039-b6ec-ff806fb6419b.png](./img/4_xIH9kdrSNB7IMN/1684911293119-d8ab199d-b383-4039-b6ec-ff806fb6419b-316994.png)
+![1684911293119-d8ab199d-b383-4039-b6ec-ff806fb6419b.png](img/4_xIH9kdrSNB7IMN/1684911293119-d8ab199d-b383-4039-b6ec-ff806fb6419b-316994.png)
 
 ```plsql
 Explain SELECT * FROM user1 WHERE name LIKE 'A%' and age = 40;
 ```
 
-![1684910526901-277dc73b-ab09-4f0a-b5b0-c16d7e67ef2d.png](./img/4_xIH9kdrSNB7IMN/1684910526901-277dc73b-ab09-4f0a-b5b0-c16d7e67ef2d-675443.png)
+![1684910526901-277dc73b-ab09-4f0a-b5b0-c16d7e67ef2d.png](img/4_xIH9kdrSNB7IMN/1684910526901-277dc73b-ab09-4f0a-b5b0-c16d7e67ef2d-675443.png)
 
 使用索引下推实现  
-![1684911337782-8a0d9866-db27-4ab4-885b-e2904d09b61e.png](./img/4_xIH9kdrSNB7IMN/1684911337782-8a0d9866-db27-4ab4-885b-e2904d09b61e-121388.png)
+![1684911337782-8a0d9866-db27-4ab4-885b-e2904d09b61e.png](img/4_xIH9kdrSNB7IMN/1684911337782-8a0d9866-db27-4ab4-885b-e2904d09b61e-121388.png)
 
 ```plsql
 Explain SELECT * FROM user1 WHERE name LIKE 'A%' and age = 40;
 ```
 
-![1684910563222-95b45c8a-6cf7-44ab-af51-1d7b7e4cd7be.png](./img/4_xIH9kdrSNB7IMN/1684910563222-95b45c8a-6cf7-44ab-af51-1d7b7e4cd7be-755488.png)
+![1684910563222-95b45c8a-6cf7-44ab-af51-1d7b7e4cd7be.png](img/4_xIH9kdrSNB7IMN/1684910563222-95b45c8a-6cf7-44ab-af51-1d7b7e4cd7be-755488.png)
 
-![1686060427122-d526de38-82e8-4a36-b22e-253d68daefd9.png](./img/4_xIH9kdrSNB7IMN/1686060427122-d526de38-82e8-4a36-b22e-253d68daefd9-031277.png)
+![1686060427122-d526de38-82e8-4a36-b22e-253d68daefd9.png](img/4_xIH9kdrSNB7IMN/1686060427122-d526de38-82e8-4a36-b22e-253d68daefd9-031277.png)
 
 <font style="color:rgb(0, 0, 0);">接下来要执行如下的sql</font>
 
@@ -438,7 +438,7 @@ select * from `user` where name = '赵六' and age= 22;
 
 <font style="color:rgb(0, 0, 0);">查看执行计划</font>
 
-![1686060427143-0d4fe61f-28b1-4407-b501-4c25a61055db.png](./img/4_xIH9kdrSNB7IMN/1686060427143-0d4fe61f-28b1-4407-b501-4c25a61055db-782186.png)
+![1686060427143-0d4fe61f-28b1-4407-b501-4c25a61055db.png](img/4_xIH9kdrSNB7IMN/1686060427143-0d4fe61f-28b1-4407-b501-4c25a61055db-782186.png)
 
 <font style="color:rgb(0, 0, 0);">type是</font><font style="color:rgb(239, 112, 96);">index_merge</font><font style="color:rgb(0, 0, 0);">，并且possible_key和key都是</font><font style="color:rgb(239, 112, 96);">idx_name</font><font style="color:rgb(0, 0, 0);">和</font><font style="color:rgb(239, 112, 96);">idx_age</font><font style="color:rgb(0, 0, 0);">，说明使用了索引合并，并且Extra有</font><font style="color:rgb(239, 112, 96);">Using intersect(idx_age,idx_name)</font><font style="color:rgb(0, 0, 0);">，intersect就是交集的意思。</font>
 
@@ -452,7 +452,7 @@ select * from `user` where name = '赵六' and age= 22;
 select * from `user` where name = '赵六' and age > 22;
 ```
 
-![1686060427441-ebaf070f-dfb3-4163-afc8-2370954bc3cc.png](./img/4_xIH9kdrSNB7IMN/1686060427441-ebaf070f-dfb3-4163-afc8-2370954bc3cc-004112.png)
+![1686060427441-ebaf070f-dfb3-4163-afc8-2370954bc3cc.png](img/4_xIH9kdrSNB7IMN/1686060427441-ebaf070f-dfb3-4163-afc8-2370954bc3cc-004112.png)
 
 <font style="color:rgb(0, 0, 0);">只能用name这个索引，因为</font><font style="color:rgb(239, 112, 96);">age > 22</font><font style="color:rgb(0, 0, 0);">查出来的id是无序的，前面在讲索引的时候有说过索引列的排序规则</font>
 
@@ -510,9 +510,9 @@ _**<font style="color:rgb(51, 51, 51);">二、两者有什么区别？</font>**_
 
 <font style="color:rgb(51, 51, 51);">拿官网两者的 Features 来作一个分析对比吧：</font>
 
-![1685885295850-cd6ca510-c34c-4c9a-8ca9-eae76c17a224.png](./img/4_xIH9kdrSNB7IMN/1685885295850-cd6ca510-c34c-4c9a-8ca9-eae76c17a224-054947.png)
+![1685885295850-cd6ca510-c34c-4c9a-8ca9-eae76c17a224.png](img/4_xIH9kdrSNB7IMN/1685885295850-cd6ca510-c34c-4c9a-8ca9-eae76c17a224-054947.png)
 
-![1685885420022-adfd96b6-33c8-4310-b4b3-939e298fa958.png](./img/4_xIH9kdrSNB7IMN/1685885420022-adfd96b6-33c8-4310-b4b3-939e298fa958-268255.png)
+![1685885420022-adfd96b6-33c8-4310-b4b3-939e298fa958.png](img/4_xIH9kdrSNB7IMN/1685885420022-adfd96b6-33c8-4310-b4b3-939e298fa958-268255.png)
 
 <font style="color:rgb(51, 51, 51);">1、InnoDB 是聚集索引，数据文件是和索引绑在一起的，必须要有主键，通过主键索引效率很高，但是辅助索引需要两次查询，先查询到主键，然后再通过主键查询到数据。因此，主键不应该过大，否则其他索引也会很大。而 MyISAM 是非聚集索引，数据文件是分离的，索引保存的是数据文件的指针，主键索引和辅助索引是独立的。</font>
 
@@ -584,7 +584,7 @@ InnoDB是MySQL中的一种存储引擎，它会为每个表创建一个主键索
 
 # <font style="color:#FFFFFF;background-color:#ED740C;">二.优化</font>
 ## <font style="color:#FFFFFF;background-color:#ED740C;">1、优化方法</font>
-![1685889373587-181e5819-b6b7-44d4-bdcb-98f3e425ecab.png](./img/4_xIH9kdrSNB7IMN/1685889373587-181e5819-b6b7-44d4-bdcb-98f3e425ecab-358560.png)
+![1685889373587-181e5819-b6b7-44d4-bdcb-98f3e425ecab.png](img/4_xIH9kdrSNB7IMN/1685889373587-181e5819-b6b7-44d4-bdcb-98f3e425ecab-358560.png)
 
  
 
@@ -605,7 +605,7 @@ InnoDB是MySQL中的一种存储引擎，它会为每个表创建一个主键索
 
 
 ## 2、通过Explain干预执行计划
-![画板](./img/4_xIH9kdrSNB7IMN/1681620823221-a4a25019-f021-46ec-aafe-f11a306fc83e-980110.jpeg)
+![画板](img/4_xIH9kdrSNB7IMN/1681620823221-a4a25019-f021-46ec-aafe-f11a306fc83e-980110.jpeg)
 
 ### 1.Explain含义
 Explain是 SQL 分析工具中非常重要的一个功能，它可以模拟优化器执行查询语句，帮助我们理解查询是如何执行的；分析查询执行计划可以帮助我们发现查询瓶颈，优化查询性能。
@@ -692,7 +692,7 @@ MySQL5.7版本引入了这两个特性，直接使用Explain关键字可以将pa
 Explain select * from users;
 ```
 
-![1681024592949-53b352d8-76bb-48c2-b08c-3b333147be4c.png](./img/4_xIH9kdrSNB7IMN/1681024592949-53b352d8-76bb-48c2-b08c-3b333147be4c-518825.png)
+![1681024592949-53b352d8-76bb-48c2-b08c-3b333147be4c.png](img/4_xIH9kdrSNB7IMN/1681024592949-53b352d8-76bb-48c2-b08c-3b333147be4c-518825.png)
 
 
 
@@ -733,7 +733,7 @@ INNER JOIN orders ON users.id = orders.user_id
 INNER JOIN products ON orders.product_id = products.id;
 ```
 
-![1681026719178-e164f36f-c6ea-476b-9ebe-c8d3a86763b6.png](./img/4_xIH9kdrSNB7IMN/1681026719178-e164f36f-c6ea-476b-9ebe-c8d3a86763b6-877862.png)
+![1681026719178-e164f36f-c6ea-476b-9ebe-c8d3a86763b6.png](img/4_xIH9kdrSNB7IMN/1681026719178-e164f36f-c6ea-476b-9ebe-c8d3a86763b6-877862.png)
 
 
 
@@ -742,7 +742,7 @@ explain
 select * from orders where product_id =  (select id from products where products.price = 10);
 ```
 
-![1681111885827-f385c7dc-fd67-4213-9911-90b9b1a5b4a8.png](./img/4_xIH9kdrSNB7IMN/1681111885827-f385c7dc-fd67-4213-9911-90b9b1a5b4a8-126948.png)
+![1681111885827-f385c7dc-fd67-4213-9911-90b9b1a5b4a8.png](img/4_xIH9kdrSNB7IMN/1681111885827-f385c7dc-fd67-4213-9911-90b9b1a5b4a8-126948.png)
 
 
 
@@ -756,7 +756,7 @@ from (select id from products) as temp inner join orders on temp.id = orders.pro
 set session optimizer_switch='derived_merge=on'; #还原配置
 ```
 
-![1681026768642-9a4aeb47-5788-4346-8112-5aa54d51d4a6.png](./img/4_xIH9kdrSNB7IMN/1681026768642-9a4aeb47-5788-4346-8112-5aa54d51d4a6-496814.png)
+![1681026768642-9a4aeb47-5788-4346-8112-5aa54d51d4a6.png](img/4_xIH9kdrSNB7IMN/1681026768642-9a4aeb47-5788-4346-8112-5aa54d51d4a6-496814.png)
 
 
 
@@ -767,7 +767,7 @@ union
 select id from products;
 ```
 
-![1681026786538-8a937cef-7daf-4409-a8a9-84364f426702.png](./img/4_xIH9kdrSNB7IMN/1681026786538-8a937cef-7daf-4409-a8a9-84364f426702-456758.png)
+![1681026786538-8a937cef-7daf-4409-a8a9-84364f426702.png](img/4_xIH9kdrSNB7IMN/1681026786538-8a937cef-7daf-4409-a8a9-84364f426702-456758.png)
 
 
 
@@ -784,7 +784,7 @@ show WARNINGS;
 Explain select * from users;
 ```
 
-![1681025521715-b8ce528b-f4ab-44fb-a088-90fa8f8dded2.png](./img/4_xIH9kdrSNB7IMN/1681025521715-b8ce528b-f4ab-44fb-a088-90fa8f8dded2-024816.png)
+![1681025521715-b8ce528b-f4ab-44fb-a088-90fa8f8dded2.png](img/4_xIH9kdrSNB7IMN/1681025521715-b8ce528b-f4ab-44fb-a088-90fa8f8dded2-024816.png)
 
 
 
@@ -792,7 +792,7 @@ Explain select * from users;
 Explain select * from users inner join orders on users.id = orders.user_id;
 ```
 
-![1681287552178-bd66eaa3-6e70-4d2a-a39f-83ff9925fad9.png](./img/4_xIH9kdrSNB7IMN/1681287552178-bd66eaa3-6e70-4d2a-a39f-83ff9925fad9-499534.png)
+![1681287552178-bd66eaa3-6e70-4d2a-a39f-83ff9925fad9.png](img/4_xIH9kdrSNB7IMN/1681287552178-bd66eaa3-6e70-4d2a-a39f-83ff9925fad9-499534.png)
 
 ##### 2.2.primary：复杂查询中最外层查询，比如使用union或union all时，id为1的记录select_type通常是primary
 ```sql
@@ -802,7 +802,7 @@ union
 select id from products;
 ```
 
-![1681272527877-5ee1cd39-0abc-4406-b23a-7fbd91755d8b.png](./img/4_xIH9kdrSNB7IMN/1681272527877-5ee1cd39-0abc-4406-b23a-7fbd91755d8b-868796.png)
+![1681272527877-5ee1cd39-0abc-4406-b23a-7fbd91755d8b.png](img/4_xIH9kdrSNB7IMN/1681272527877-5ee1cd39-0abc-4406-b23a-7fbd91755d8b-868796.png)
 
 
 
@@ -812,7 +812,7 @@ explain
 select orders.*,(select name from products where id = 1) from orders;
 ```
 
-![1681029309790-04cfe1df-d34b-4a1c-81e4-0a3293e57a15.png](./img/4_xIH9kdrSNB7IMN/1681029309790-04cfe1df-d34b-4a1c-81e4-0a3293e57a15-266204.png)
+![1681029309790-04cfe1df-d34b-4a1c-81e4-0a3293e57a15.png](img/4_xIH9kdrSNB7IMN/1681029309790-04cfe1df-d34b-4a1c-81e4-0a3293e57a15-266204.png)
 
 
 
@@ -822,7 +822,7 @@ explain
 select orders.*,(select name from products where products.id = orders.user_id) from orders;
 ```
 
-![1681047335693-594d517a-7107-4554-8b28-64401c62e334.png](./img/4_xIH9kdrSNB7IMN/1681047335693-594d517a-7107-4554-8b28-64401c62e334-401814.png)
+![1681047335693-594d517a-7107-4554-8b28-64401c62e334.png](img/4_xIH9kdrSNB7IMN/1681047335693-594d517a-7107-4554-8b28-64401c62e334-401814.png)
 
 
 
@@ -836,7 +836,7 @@ select * from (select user_id from orders where id = 1) as temp;
 set session optimizer_switch='derived_merge=on'; #还原配置
 ```
 
-![1681272573191-8078286f-8374-44fe-a1a0-668f7ccb7fac.png](./img/4_xIH9kdrSNB7IMN/1681272573191-8078286f-8374-44fe-a1a0-668f7ccb7fac-008441.png)
+![1681272573191-8078286f-8374-44fe-a1a0-668f7ccb7fac.png](img/4_xIH9kdrSNB7IMN/1681272573191-8078286f-8374-44fe-a1a0-668f7ccb7fac-008441.png)
 
 
 
@@ -851,7 +851,7 @@ union
 select id from users where name = '张三' ) as temp;
 ```
 
-![1681305655206-41e7f35a-3d2d-4169-9a70-cc752e4186c9.png](./img/4_xIH9kdrSNB7IMN/1681305655206-41e7f35a-3d2d-4169-9a70-cc752e4186c9-831833.png)
+![1681305655206-41e7f35a-3d2d-4169-9a70-cc752e4186c9.png](img/4_xIH9kdrSNB7IMN/1681305655206-41e7f35a-3d2d-4169-9a70-cc752e4186c9-831833.png)
 
 
 
@@ -865,7 +865,7 @@ union all
 select id from users where name = '张三' ) as temp;
 ```
 
-![1681289909665-76752c8e-9661-4806-b1cf-516ec8b33bad.png](./img/4_xIH9kdrSNB7IMN/1681289909665-76752c8e-9661-4806-b1cf-516ec8b33bad-989541.png)
+![1681289909665-76752c8e-9661-4806-b1cf-516ec8b33bad.png](img/4_xIH9kdrSNB7IMN/1681289909665-76752c8e-9661-4806-b1cf-516ec8b33bad-989541.png)
 
 
 
@@ -880,7 +880,7 @@ union
 select id from users where name = '张三' );
 ```
 
-![1681289864894-93092296-3304-4d99-9ff7-3fbe4bc0a1a0.png](./img/4_xIH9kdrSNB7IMN/1681289864894-93092296-3304-4d99-9ff7-3fbe4bc0a1a0-844182.png)
+![1681289864894-93092296-3304-4d99-9ff7-3fbe4bc0a1a0.png](img/4_xIH9kdrSNB7IMN/1681289864894-93092296-3304-4d99-9ff7-3fbe4bc0a1a0-844182.png)
 
 
 
@@ -892,8 +892,8 @@ union
 select id from products;
 ```
 
-![1681272681693-656c2b09-74ec-4876-bd22-f246659f556b.png](./img/4_xIH9kdrSNB7IMN/1681272681693-656c2b09-74ec-4876-bd22-f246659f556b-708313.png)  
-![1681029933432-692c9a82-c2b5-4b2e-890f-903dc58bec27.png](./img/4_xIH9kdrSNB7IMN/1681029933432-692c9a82-c2b5-4b2e-890f-903dc58bec27-921923.png)
+![1681272681693-656c2b09-74ec-4876-bd22-f246659f556b.png](img/4_xIH9kdrSNB7IMN/1681272681693-656c2b09-74ec-4876-bd22-f246659f556b-708313.png)  
+![1681029933432-692c9a82-c2b5-4b2e-890f-903dc58bec27.png](img/4_xIH9kdrSNB7IMN/1681029933432-692c9a82-c2b5-4b2e-890f-903dc58bec27-921923.png)
 
 
 
@@ -914,7 +914,7 @@ INSERT INTO t VALUES(1);
 explain select * from t;
 ```
 
-![1681365781705-5ee3b302-7e4c-40ed-94a8-72759b980e92.png](./img/4_xIH9kdrSNB7IMN/1681365781705-5ee3b302-7e4c-40ed-94a8-72759b980e92-618529.png)
+![1681365781705-5ee3b302-7e4c-40ed-94a8-72759b980e92.png](img/4_xIH9kdrSNB7IMN/1681365781705-5ee3b302-7e4c-40ed-94a8-72759b980e92-618529.png)
 
 Memory存储引擎的统计数据是精确的，所以当只有一条记录的时候type类型为system。
 
@@ -925,7 +925,7 @@ INSERT INTO tt VALUES(1);
 explain select * from tt;
 ```
 
-![1681368181258-8eb20a57-c719-4756-afc6-1f0ec8a72ad2.png](./img/4_xIH9kdrSNB7IMN/1681368181258-8eb20a57-c719-4756-afc6-1f0ec8a72ad2-881299.png)
+![1681368181258-8eb20a57-c719-4756-afc6-1f0ec8a72ad2.png](img/4_xIH9kdrSNB7IMN/1681368181258-8eb20a57-c719-4756-afc6-1f0ec8a72ad2-881299.png)
 
 ##### 5.2.const：基于主键或唯一索引查看一行，当MySQL对查询某部分进行优化，并转换为一个常量时，使用这些类型访问转换成常量查询，效率高
 ```sql
@@ -933,7 +933,7 @@ explain
 select * from orders where id = 1;
 ```
 
-![1681366253574-0fa5ca6c-2d64-40f0-9a01-2454c736e53a.png](./img/4_xIH9kdrSNB7IMN/1681366253574-0fa5ca6c-2d64-40f0-9a01-2454c736e53a-641637.png)
+![1681366253574-0fa5ca6c-2d64-40f0-9a01-2454c736e53a.png](img/4_xIH9kdrSNB7IMN/1681366253574-0fa5ca6c-2d64-40f0-9a01-2454c736e53a-641637.png)
 
 ##### 5.3.eq_ref：基于主键或唯一索引连接两个表，对于每个索引键值，只有一条匹配记录，被驱动表的类型为'eq_ref'
 ```sql
@@ -941,7 +941,7 @@ explain
 select users.* from users inner join orders on users.id = orders.id;
 ```
 
-![1681366272461-a8f66d17-3156-448c-97c5-d9421863ebb1.png](./img/4_xIH9kdrSNB7IMN/1681366272461-a8f66d17-3156-448c-97c5-d9421863ebb1-894292.png)
+![1681366272461-a8f66d17-3156-448c-97c5-d9421863ebb1.png](img/4_xIH9kdrSNB7IMN/1681366272461-a8f66d17-3156-448c-97c5-d9421863ebb1-894292.png)
 
 ##### 5.4.ref：基于非唯一索引连接两个表或通过二级索引列与常量进行等值匹配，可能会存在多条匹配记录
 1.关联查询，使用非唯一索引进行匹配。
@@ -951,7 +951,7 @@ explain
 select users.* from users inner join orders on users.id = orders.user_id;
 ```
 
-![1681366725970-346f1c6a-4c3c-4076-a06a-239a9f1c28f7.png](./img/4_xIH9kdrSNB7IMN/1681366725970-346f1c6a-4c3c-4076-a06a-239a9f1c28f7-874021.png)  
+![1681366725970-346f1c6a-4c3c-4076-a06a-239a9f1c28f7.png](img/4_xIH9kdrSNB7IMN/1681366725970-346f1c6a-4c3c-4076-a06a-239a9f1c28f7-874021.png)  
 2.简单查询，使用二级索引列匹配。
 
 ```sql
@@ -959,7 +959,7 @@ explain
 select * from orders where user_id = 1;
 ```
 
-![1681366311397-1eb1ba55-cb00-464b-b3c8-2949bd18a718.png](./img/4_xIH9kdrSNB7IMN/1681366311397-1eb1ba55-cb00-464b-b3c8-2949bd18a718-554135.png)
+![1681366311397-1eb1ba55-cb00-464b-b3c8-2949bd18a718.png](img/4_xIH9kdrSNB7IMN/1681366311397-1eb1ba55-cb00-464b-b3c8-2949bd18a718-554135.png)
 
 ##### 5.5.range：使用非唯一索引扫描部分索引，比如使用索引获取某些范围区间的记录
 ```sql
@@ -967,7 +967,7 @@ explain
 select * from orders where user_id > 3;
 ```
 
-![1681366328856-b4f80e75-c7d3-40c7-a2c7-21c53c900bfb.png](./img/4_xIH9kdrSNB7IMN/1681366328856-b4f80e75-c7d3-40c7-a2c7-21c53c900bfb-992389.png)
+![1681366328856-b4f80e75-c7d3-40c7-a2c7-21c53c900bfb.png](img/4_xIH9kdrSNB7IMN/1681366328856-b4f80e75-c7d3-40c7-a2c7-21c53c900bfb-992389.png)
 
 ##### 5.6.index：扫描整个索引就能拿到结果，一般是二级索引，这种查询一般为使用覆盖索引（需优化，缩小数据范围）
 ```sql
@@ -975,7 +975,7 @@ explain
 select user_id from orders;
 ```
 
-![1681366836249-8d05dc8f-5859-467d-ac77-d5d95a7201ef.png](./img/4_xIH9kdrSNB7IMN/1681366836249-8d05dc8f-5859-467d-ac77-d5d95a7201ef-510011.png)
+![1681366836249-8d05dc8f-5859-467d-ac77-d5d95a7201ef.png](img/4_xIH9kdrSNB7IMN/1681366836249-8d05dc8f-5859-467d-ac77-d5d95a7201ef-510011.png)
 
 ##### 5.7.all：扫描整个表进行匹配，即扫描聚簇索引树（需优化，添加索引优化）
 ```sql
@@ -983,7 +983,7 @@ explain
 select * from users;
 ```
 
-![1681039103901-8b407ac2-cdb5-44c1-b3e4-3f35818907a7.png](./img/4_xIH9kdrSNB7IMN/1681039103901-8b407ac2-cdb5-44c1-b3e4-3f35818907a7-471601.png)
+![1681039103901-8b407ac2-cdb5-44c1-b3e4-3f35818907a7.png](img/4_xIH9kdrSNB7IMN/1681039103901-8b407ac2-cdb5-44c1-b3e4-3f35818907a7-471601.png)
 
 ##### 5.8.NULL：MySQL在优化过程中分解语句就已经可以获取到结果，执行时甚至不用访问表或索引。
 ```sql
@@ -991,7 +991,7 @@ explain
 select min(id) from users;
 ```
 
-![1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d.png](./img/4_xIH9kdrSNB7IMN/1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d-384746.png)
+![1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d.png](img/4_xIH9kdrSNB7IMN/1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d-384746.png)
 
 #### 6.possible_keys列：表示在查询中可能使用到某个索引或多个索引；如果没有选择索引，显示NULL
 #### 7.key列：表示在查询中实际使用的索引，如果没有使用索引，显示NULL。
@@ -1005,7 +1005,7 @@ explain
 select * from users where id = 1;
 ```
 
-![1681384753103-94604447-d2b6-49bb-bc4c-23c14b1a076b.png](./img/4_xIH9kdrSNB7IMN/1681384753103-94604447-d2b6-49bb-bc4c-23c14b1a076b-074520.png)
+![1681384753103-94604447-d2b6-49bb-bc4c-23c14b1a076b.png](img/4_xIH9kdrSNB7IMN/1681384753103-94604447-d2b6-49bb-bc4c-23c14b1a076b-074520.png)
 
 
 
@@ -1016,7 +1016,7 @@ explain
 select * from users where name = '张三' and email = 'zhangsan@example.com';
 ```
 
-![1681043991351-f81c0cc8-6968-40b2-9e4b-f8163585d542.png](./img/4_xIH9kdrSNB7IMN/1681043991351-f81c0cc8-6968-40b2-9e4b-f8163585d542-812361.png)  
+![1681043991351-f81c0cc8-6968-40b2-9e4b-f8163585d542.png](img/4_xIH9kdrSNB7IMN/1681043991351-f81c0cc8-6968-40b2-9e4b-f8163585d542-812361.png)  
 计算规则：
 
 + 字符串：
@@ -1044,7 +1044,7 @@ timestamp：4字节
 datetime：8字节  
 字段如果为NULL，需要1个字节记录是否为NULL
 
-#### ![1686491522804-98efd37f-1489-4202-8b36-51c2fdafa9c2.png](./img/4_xIH9kdrSNB7IMN/1686491522804-98efd37f-1489-4202-8b36-51c2fdafa9c2-909527.png)
+#### ![1686491522804-98efd37f-1489-4202-8b36-51c2fdafa9c2.png](img/4_xIH9kdrSNB7IMN/1686491522804-98efd37f-1489-4202-8b36-51c2fdafa9c2-909527.png)
 #### 9.ref列：表示将哪个字段或常量和key列所使用的字段进行比较。
 当使用索引列等值查询时，与索引列进行等值匹配的对象信息。
 
@@ -1055,7 +1055,7 @@ explain
 select * from users where name = '张三' and email = 'zhangsan@example.com';
 ```
 
-![1681447679631-4023e7e4-924b-45d9-97bc-a3015f5e2e89.png](./img/4_xIH9kdrSNB7IMN/1681447679631-4023e7e4-924b-45d9-97bc-a3015f5e2e89-541122.png)
+![1681447679631-4023e7e4-924b-45d9-97bc-a3015f5e2e89.png](img/4_xIH9kdrSNB7IMN/1681447679631-4023e7e4-924b-45d9-97bc-a3015f5e2e89-541122.png)
 
 
 
@@ -1066,7 +1066,7 @@ explain
 select users.* from users inner join orders on users.id = orders.id;
 ```
 
-![1681446642630-3813f19b-6e70-49d4-82da-12f4fdb00754.png](./img/4_xIH9kdrSNB7IMN/1681446642630-3813f19b-6e70-49d4-82da-12f4fdb00754-967219.png)
+![1681446642630-3813f19b-6e70-49d4-82da-12f4fdb00754.png](img/4_xIH9kdrSNB7IMN/1681446642630-3813f19b-6e70-49d4-82da-12f4fdb00754-967219.png)
 
 
 
@@ -1077,7 +1077,7 @@ explain
 select users.* from users inner join orders on users.id = trim(orders.id);
 ```
 
-![1681454629742-f28fd829-b9e5-4e5e-9488-9d29f3faba65.png](./img/4_xIH9kdrSNB7IMN/1681454629742-f28fd829-b9e5-4e5e-9488-9d29f3faba65-250788.png)
+![1681454629742-f28fd829-b9e5-4e5e-9488-9d29f3faba65.png](img/4_xIH9kdrSNB7IMN/1681454629742-f28fd829-b9e5-4e5e-9488-9d29f3faba65-250788.png)
 
 #### 10.rows列：全表扫描时表示需要扫描表的行数估计值；索引扫描时表示扫描索引的行数估计值；值越小越好（不是结果集中的行数）
 1.全表扫描
@@ -1087,7 +1087,7 @@ explain
 select * from orders where user_id >= 3 and total_price = 25;
 ```
 
-![1681449747200-d5473ed5-9cec-4ad0-b696-afc1c1427bc3.png](./img/4_xIH9kdrSNB7IMN/1681449747200-d5473ed5-9cec-4ad0-b696-afc1c1427bc3-669056.png)
+![1681449747200-d5473ed5-9cec-4ad0-b696-afc1c1427bc3.png](img/4_xIH9kdrSNB7IMN/1681449747200-d5473ed5-9cec-4ad0-b696-afc1c1427bc3-669056.png)
 
 
 
@@ -1098,7 +1098,7 @@ explain
 select * from orders where user_id > 3;
 ```
 
-![1681449133838-d210e8ea-6a40-4ccb-8ac3-c4d810032f1c.png](./img/4_xIH9kdrSNB7IMN/1681449133838-d210e8ea-6a40-4ccb-8ac3-c4d810032f1c-076799.png)
+![1681449133838-d210e8ea-6a40-4ccb-8ac3-c4d810032f1c.png](img/4_xIH9kdrSNB7IMN/1681449133838-d210e8ea-6a40-4ccb-8ac3-c4d810032f1c-076799.png)
 
 #### 11.filtered列：表示符合查询条件的数据百分比。可以使用rows * filtered/100计算出与**<font style="color:rgb(17, 17, 17);">explain</font>**前一个表进行连接的行数。
 前一个表指 explain 中的id值比当前表id值小的表，id相同的时候指后执行的表。
@@ -1108,7 +1108,7 @@ explain
 select users.* from users inner join orders on users.id = orders.id;
 ```
 
-![1681449894480-5b14d3bf-04ee-450b-bdf8-150cfa66ec57.png](./img/4_xIH9kdrSNB7IMN/1681449894480-5b14d3bf-04ee-450b-bdf8-150cfa66ec57-014370.png)
+![1681449894480-5b14d3bf-04ee-450b-bdf8-150cfa66ec57.png](img/4_xIH9kdrSNB7IMN/1681449894480-5b14d3bf-04ee-450b-bdf8-150cfa66ec57-014370.png)
 
 #### 12.Extra列：SQL执行查询的一些额外信息
 ##### 12.1.Using Index：使用非主键索引树就可以查询所需要的数据。一般是覆盖索引，即查询列都包含在辅助索引树叶子节点中，不需要回表查询。
@@ -1117,7 +1117,7 @@ explain
 select user_id,id from orders where user_id = 1;
 ```
 
-![1681044775275-6a7736f1-9b4a-4d35-ba85-dbedd53e6823.png](./img/4_xIH9kdrSNB7IMN/1681044775275-6a7736f1-9b4a-4d35-ba85-dbedd53e6823-490826.png)
+![1681044775275-6a7736f1-9b4a-4d35-ba85-dbedd53e6823.png](img/4_xIH9kdrSNB7IMN/1681044775275-6a7736f1-9b4a-4d35-ba85-dbedd53e6823-490826.png)
 
 ##### 12.2.Using where：不通过索引查询所需要的数据
 ```sql
@@ -1128,7 +1128,7 @@ explain
 select * from orders where user_id = 1 and total_price = 100;
 ```
 
-![1681044854093-370ad425-71a6-4008-b7be-55467d1c9251.png](./img/4_xIH9kdrSNB7IMN/1681044854093-370ad425-71a6-4008-b7be-55467d1c9251-277201.png)
+![1681044854093-370ad425-71a6-4008-b7be-55467d1c9251.png](img/4_xIH9kdrSNB7IMN/1681044854093-370ad425-71a6-4008-b7be-55467d1c9251-277201.png)
 
 ##### 12.3.Using index condition：表示查询列不被索引覆盖，where 条件中是一个索引范围查找，过滤完索引后回表找到所有符合条件的数据行。
 ```sql
@@ -1136,7 +1136,7 @@ explain
 select * from orders where user_id > 3;
 ```
 
-![1681045567332-67e9a87a-1b04-4693-b226-f427bc53fc45.png](./img/4_xIH9kdrSNB7IMN/1681045567332-67e9a87a-1b04-4693-b226-f427bc53fc45-478155.png)
+![1681045567332-67e9a87a-1b04-4693-b226-f427bc53fc45.png](img/4_xIH9kdrSNB7IMN/1681045567332-67e9a87a-1b04-4693-b226-f427bc53fc45-478155.png)
 
 ##### 12.4.Using temporary：表示需要使用临时表来处理查询；
 1.total_price列无索引，需要创建一张临时表进行去重
@@ -1146,7 +1146,7 @@ explain
 select distinct total_price from orders;
 ```
 
-![1681045772656-8572b080-7051-4df2-8625-980f54c5771a.png](./img/4_xIH9kdrSNB7IMN/1681045772656-8572b080-7051-4df2-8625-980f54c5771a-437741.png)  
+![1681045772656-8572b080-7051-4df2-8625-980f54c5771a.png](img/4_xIH9kdrSNB7IMN/1681045772656-8572b080-7051-4df2-8625-980f54c5771a-437741.png)  
 2.name列有联合索引
 
 ```sql
@@ -1154,7 +1154,7 @@ explain
 select distinct name from users;
 ```
 
-![1681046236030-f805a8ac-1946-4600-a5b9-6bf583f5e39e.png](./img/4_xIH9kdrSNB7IMN/1681046236030-f805a8ac-1946-4600-a5b9-6bf583f5e39e-329013.png)
+![1681046236030-f805a8ac-1946-4600-a5b9-6bf583f5e39e.png](img/4_xIH9kdrSNB7IMN/1681046236030-f805a8ac-1946-4600-a5b9-6bf583f5e39e-329013.png)
 
 ##### 12.5.Using filesort：当查询中包含 order by 操作而且无法利用索引完成的排序操作，数据较少时从内存排序，如果数据较多需要在磁盘中排序。	需优化成索引排序。
 1.total_price列无索引，无法通过索引进行排序。需要先保存total_price与对应的主键id，然后在排序total_price查找数据。
@@ -1164,7 +1164,7 @@ explain
 select total_price from orders order by total_price;
 ```
 
-![1681464127193-d83100a9-f5c3-4139-a8d0-7225ec490e8f.png](./img/4_xIH9kdrSNB7IMN/1681464127193-d83100a9-f5c3-4139-a8d0-7225ec490e8f-346685.png)  
+![1681464127193-d83100a9-f5c3-4139-a8d0-7225ec490e8f.png](img/4_xIH9kdrSNB7IMN/1681464127193-d83100a9-f5c3-4139-a8d0-7225ec490e8f-346685.png)  
 2.name列有索引，因索引已经是排好序的所以直接读取就可以了。
 
 ```sql
@@ -1172,7 +1172,7 @@ explain
 select name from users order by name;
 ```
 
-![1681474747964-b0738d83-519e-4e6e-a649-d3ac167a7d5e.png](./img/4_xIH9kdrSNB7IMN/1681474747964-b0738d83-519e-4e6e-a649-d3ac167a7d5e-269461.png)
+![1681474747964-b0738d83-519e-4e6e-a649-d3ac167a7d5e.png](img/4_xIH9kdrSNB7IMN/1681474747964-b0738d83-519e-4e6e-a649-d3ac167a7d5e-269461.png)
 
 ##### 12.6.Select tables optimized away：使用某些聚合函数（min,max）来访问某个索引值。
 ```sql
@@ -1183,7 +1183,7 @@ explain
 select min(password) from users;
 ```
 
-![1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d.png](./img/4_xIH9kdrSNB7IMN/1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d-984473.png)
+![1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d.png](img/4_xIH9kdrSNB7IMN/1681039399639-75db39c7-cf2f-49c0-92fb-b00364a29c8d-984473.png)
 
 ###   
 
@@ -1231,7 +1231,7 @@ EXPLAIN SELECT * FROM employees WHERE name= '张三';
 
 <font style="color:rgb(51, 51, 51);">查看索引长度是74=(3*24+2),可以算出联合索引中只使用了name前缀索引.</font> 
 
-![1686058000736-c2814e2e-425f-47fa-ae6e-b8d7c1abef87.png](./img/4_xIH9kdrSNB7IMN/1686058000736-c2814e2e-425f-47fa-ae6e-b8d7c1abef87-384360.png)  
+![1686058000736-c2814e2e-425f-47fa-ae6e-b8d7c1abef87.png](img/4_xIH9kdrSNB7IMN/1686058000736-c2814e2e-425f-47fa-ae6e-b8d7c1abef87-384360.png)  
 
 
 ```sql
@@ -1240,7 +1240,7 @@ EXPLAIN SELECT * FROM employees WHERE name= '张三' AND age = 18;
 
 <font style="color:rgb(51, 51, 51);">查看索引长度是78=(3*24+2)+4,可以算出联合索引中只使用了name和age前缀索引.</font>
 
-![1686058010089-64bd6184-680e-4c61-9c97-2076107f1ec4.png](./img/4_xIH9kdrSNB7IMN/1686058010089-64bd6184-680e-4c61-9c97-2076107f1ec4-423429.png)  
+![1686058010089-64bd6184-680e-4c61-9c97-2076107f1ec4.png](img/4_xIH9kdrSNB7IMN/1686058010089-64bd6184-680e-4c61-9c97-2076107f1ec4-423429.png)  
 
 
 ```sql
@@ -1249,7 +1249,7 @@ EXPLAIN SELECT * FROM employees WHERE name= '张三' AND age = 18 AND position =
 
 <font style="color:rgb(51, 51, 51);">查看索引长度是140=(3*24+2)+4+(3*20+2),可以算出联合索引中只使用了完整的联合索引</font>
 
-![1686058015744-bb7e6ff0-5d6f-41f0-af4e-d2a7d64ff633.png](./img/4_xIH9kdrSNB7IMN/1686058015744-bb7e6ff0-5d6f-41f0-af4e-d2a7d64ff633-538695.png)  
+![1686058015744-bb7e6ff0-5d6f-41f0-af4e-d2a7d64ff633.png](img/4_xIH9kdrSNB7IMN/1686058015744-bb7e6ff0-5d6f-41f0-af4e-d2a7d64ff633-538695.png)  
 
 
 #### 2.最左前缀法则
@@ -1266,7 +1266,7 @@ EXPLAIN SELECT * FROM employees WHERE age = 18 AND position = 'beijing';
 EXPLAIN SELECT * FROM employees WHERE name= '张三' AND position = 'beijing'; 
 ```
 
-![1686058025925-7e9a3892-4661-48a5-a1be-c8838d54cdb7.png](./img/4_xIH9kdrSNB7IMN/1686058025925-7e9a3892-4661-48a5-a1be-c8838d54cdb7-485376.png)  
+![1686058025925-7e9a3892-4661-48a5-a1be-c8838d54cdb7.png](img/4_xIH9kdrSNB7IMN/1686058025925-7e9a3892-4661-48a5-a1be-c8838d54cdb7-485376.png)  
 
 
 #### 3.不在索引列上做任何操作（计算、函数、（自动or手动）类型转换），会导致索引失效而转向全表扫描
@@ -1276,7 +1276,7 @@ EXPLAIN SELECT * FROM employees WHERE name = '张三';
 EXPLAIN SELECT * FROM employees WHERE left(name,3) = '张三';
 ```
 
-![1686058087297-b1fd9fcb-7abf-4eda-99c5-d226a20e0499.png](./img/4_xIH9kdrSNB7IMN/1686058087297-b1fd9fcb-7abf-4eda-99c5-d226a20e0499-634173.png)
+![1686058087297-b1fd9fcb-7abf-4eda-99c5-d226a20e0499.png](img/4_xIH9kdrSNB7IMN/1686058087297-b1fd9fcb-7abf-4eda-99c5-d226a20e0499-634173.png)
 
 给hire_time增加一个普通索引：
 
@@ -1288,7 +1288,7 @@ ALTER TABLE `employees` ADD INDEX `idx_hire_time` (`hire_time`) USING BTREE ;
 EXPLAIN select * from employees where date(hire_time) ='2018-09-30'; 
 ```
 
-![1686058109085-eb233710-739c-4801-bc50-843f7f982bbc.png](./img/4_xIH9kdrSNB7IMN/1686058109085-eb233710-739c-4801-bc50-843f7f982bbc-255273.png)
+![1686058109085-eb233710-739c-4801-bc50-843f7f982bbc.png](img/4_xIH9kdrSNB7IMN/1686058109085-eb233710-739c-4801-bc50-843f7f982bbc-255273.png)
 
 转化为日期范围查询，有可能会走索引：
 
@@ -1296,7 +1296,7 @@ EXPLAIN select * from employees where date(hire_time) ='2018-09-30';
 EXPLAIN select * from employees where hire_time >='2018-09-30 00:00:00' and hire_time <='2018-09-30 23:59:59'; 
 ```
 
-![1686058130474-0ef3901f-4492-4fc7-a98d-89306279b588.png](./img/4_xIH9kdrSNB7IMN/1686058130474-0ef3901f-4492-4fc7-a98d-89306279b588-433190.png)
+![1686058130474-0ef3901f-4492-4fc7-a98d-89306279b588.png](img/4_xIH9kdrSNB7IMN/1686058130474-0ef3901f-4492-4fc7-a98d-89306279b588-433190.png)
 
 还原最初索引状态
 
@@ -1319,7 +1319,7 @@ EXPLAIN SELECT * FROM employees WHERE name= '张三' AND age = 18 AND position =
 EXPLAIN SELECT * FROM employees WHERE name= '张三' AND age > 18 AND position ='beijing';
 ```
 
-![1686058217448-d2897ad2-2c54-4103-bb20-5821686b00ea.png](./img/4_xIH9kdrSNB7IMN/1686058217448-d2897ad2-2c54-4103-bb20-5821686b00ea-976285.png)  
+![1686058217448-d2897ad2-2c54-4103-bb20-5821686b00ea.png](img/4_xIH9kdrSNB7IMN/1686058217448-d2897ad2-2c54-4103-bb20-5821686b00ea-976285.png)  
 
 
 #### 5.尽量使用覆盖索引（只访问索引的查询（索引列包含查询列）），减少 select * 语句
@@ -1331,13 +1331,13 @@ EXPLAIN SELECT name,age FROM employees WHERE name= '张三' AND age = 18 AND pos
 
 
 
-![1686058263188-a7b01560-407a-418c-bedd-cb10c8ccc09d.png](./img/4_xIH9kdrSNB7IMN/1686058263188-a7b01560-407a-418c-bedd-cb10c8ccc09d-085311.png)
+![1686058263188-a7b01560-407a-418c-bedd-cb10c8ccc09d.png](img/4_xIH9kdrSNB7IMN/1686058263188-a7b01560-407a-418c-bedd-cb10c8ccc09d-085311.png)
 
 ```sql
 EXPLAIN SELECT * FROM employees WHERE name= 'LiLei' AND age = 23 AND position ='manager'; 
 ```
 
-![1686058283738-a72d9098-da92-4a83-ab1f-ed8598dbb8cf.png](./img/4_xIH9kdrSNB7IMN/1686058283738-a72d9098-da92-4a83-ab1f-ed8598dbb8cf-567149.png)  
+![1686058283738-a72d9098-da92-4a83-ab1f-ed8598dbb8cf.png](img/4_xIH9kdrSNB7IMN/1686058283738-a72d9098-da92-4a83-ab1f-ed8598dbb8cf-567149.png)  
 
 
 #### 6.<font style="color:rgb(35, 38, 59);">不等空值还有or，索引失效要少用；</font>
@@ -1351,7 +1351,7 @@ EXPLAIN SELECT * FROM employees WHERE name= 'LiLei' AND age = 23 AND position ='
 EXPLAIN SELECT * FROM employees WHERE name != '张三'; 
 ```
 
-![1686058378015-28d40137-3453-432a-9693-9f4b04e1e224.png](./img/4_xIH9kdrSNB7IMN/1686058378015-28d40137-3453-432a-9693-9f4b04e1e224-994908.png)  
+![1686058378015-28d40137-3453-432a-9693-9f4b04e1e224.png](img/4_xIH9kdrSNB7IMN/1686058378015-28d40137-3453-432a-9693-9f4b04e1e224-994908.png)  
 
 
 **is null,is not null 一般情况下也无法使用索引**
@@ -1360,14 +1360,14 @@ EXPLAIN SELECT * FROM employees WHERE name != '张三';
 EXPLAIN SELECT * FROM employees WHERE name is null 
 ```
 
-![1686058392680-23337c8c-dd18-481a-bf11-71e57032e4c9.png](./img/4_xIH9kdrSNB7IMN/1686058392680-23337c8c-dd18-481a-bf11-71e57032e4c9-258635.png)  
+![1686058392680-23337c8c-dd18-481a-bf11-71e57032e4c9.png](img/4_xIH9kdrSNB7IMN/1686058392680-23337c8c-dd18-481a-bf11-71e57032e4c9-258635.png)  
 **少用or或in，用它查询时，mysql不一定使用索引，mysql内部优化器会根据检索比例、表大小等多个因素整体评估是否使用索引，详见范围查询优化**
 
 ```sql
 EXPLAIN SELECT * FROM employees WHERE name = 'LiLei' or name = 'HanMeimei'; 
 ```
 
-![1686058463446-f1bcb53c-1580-4060-87fa-662386a75717.png](./img/4_xIH9kdrSNB7IMN/1686058463446-f1bcb53c-1580-4060-87fa-662386a75717-809476.png)  
+![1686058463446-f1bcb53c-1580-4060-87fa-662386a75717.png](img/4_xIH9kdrSNB7IMN/1686058463446-f1bcb53c-1580-4060-87fa-662386a75717-809476.png)  
 
 
 #### 7.<font style="color:rgb(35, 38, 59);">Like百分写最右</font>
@@ -1377,13 +1377,13 @@ EXPLAIN SELECT * FROM employees WHERE name = 'LiLei' or name = 'HanMeimei';
 EXPLAIN SELECT * FROM employees WHERE name like '%三' 
 ```
 
-![1686058405664-a5f9809b-84b0-45f8-9e09-65a88e8ac5cd.png](./img/4_xIH9kdrSNB7IMN/1686058405664-a5f9809b-84b0-45f8-9e09-65a88e8ac5cd-506738.png)
+![1686058405664-a5f9809b-84b0-45f8-9e09-65a88e8ac5cd.png](img/4_xIH9kdrSNB7IMN/1686058405664-a5f9809b-84b0-45f8-9e09-65a88e8ac5cd-506738.png)
 
 ```sql
 EXPLAIN SELECT * FROM employees WHERE name like '张%' 
 ```
 
-![1686058418486-bfec2739-f2ad-44d6-a2f9-d270e386436d.png](./img/4_xIH9kdrSNB7IMN/1686058418486-bfec2739-f2ad-44d6-a2f9-d270e386436d-362614.png)  
+![1686058418486-bfec2739-f2ad-44d6-a2f9-d270e386436d.png](img/4_xIH9kdrSNB7IMN/1686058418486-bfec2739-f2ad-44d6-a2f9-d270e386436d-362614.png)  
 
 
 问题：解决like'%字符串%'索引不被使用的方法？
@@ -1394,7 +1394,7 @@ a）使用覆盖索引，查询字段必须是建立覆盖索引字段
 EXPLAIN SELECT name,age,position FROM employees WHERE name like '%Lei%'; 
 ```
 
-![1686058439870-5ea46ede-3336-4350-b78d-1bd4c5741d28.png](./img/4_xIH9kdrSNB7IMN/1686058439870-5ea46ede-3336-4350-b78d-1bd4c5741d28-475598.png)
+![1686058439870-5ea46ede-3336-4350-b78d-1bd4c5741d28.png](img/4_xIH9kdrSNB7IMN/1686058439870-5ea46ede-3336-4350-b78d-1bd4c5741d28-475598.png)
 
 b）如果不能使用覆盖索引则可能需要借助搜索引擎
 
@@ -1409,7 +1409,7 @@ EXPLAIN SELECT * FROM employees WHERE name = '1000';
 EXPLAIN SELECT * FROM employees WHERE name = 1000; 
 ```
 
-![1686058452419-9d2c12b1-cb0a-4920-8011-cc1a350ba149.png](./img/4_xIH9kdrSNB7IMN/1686058452419-9d2c12b1-cb0a-4920-8011-cc1a350ba149-305060.png)  
+![1686058452419-9d2c12b1-cb0a-4920-8011-cc1a350ba149.png](img/4_xIH9kdrSNB7IMN/1686058452419-9d2c12b1-cb0a-4920-8011-cc1a350ba149-305060.png)  
 
 
 
@@ -1425,7 +1425,7 @@ ALTER TABLE `employees` ADD INDEX `idx_age` (`age`) USING BTREE ;
 explain select * from employees where age >=1 and age <=2000; 
 ```
 
-![1686058483959-75f6813b-15f3-41e2-94ef-951b14435913.png](./img/4_xIH9kdrSNB7IMN/1686058483959-75f6813b-15f3-41e2-94ef-951b14435913-050514.png)
+![1686058483959-75f6813b-15f3-41e2-94ef-951b14435913.png](img/4_xIH9kdrSNB7IMN/1686058483959-75f6813b-15f3-41e2-94ef-951b14435913-050514.png)
 
 没走索引原因：mysql内部优化器会根据检索比例、表大小等多个因素整体评估是否使用索引。比如这个例子，可能是由于单次数据量查询过大导致优化器最终选择不走索引
 
@@ -1438,7 +1438,7 @@ explain select * from employees where age >=1 and age <=1000;
 explain select * from employees where age >=1001 and age <=2000;
 ```
 
-![1686058500944-5598a032-150a-435f-b1bf-aa4fa4164e7e.png](./img/4_xIH9kdrSNB7IMN/1686058500944-5598a032-150a-435f-b1bf-aa4fa4164e7e-951095.png)
+![1686058500944-5598a032-150a-435f-b1bf-aa4fa4164e7e.png](img/4_xIH9kdrSNB7IMN/1686058500944-5598a032-150a-435f-b1bf-aa4fa4164e7e-951095.png)
 
 还原最初索引状态
 
@@ -1679,7 +1679,7 @@ mysql> set session optimizer_trace="enabled=off";    --关闭trace
 ```
 
 ## 3、SQL改写
-![画板](./img/4_xIH9kdrSNB7IMN/1680009272711-8a8e62aa-31c1-4845-95a0-02a74a15306d-175622.jpeg)
+![画板](img/4_xIH9kdrSNB7IMN/1680009272711-8a8e62aa-31c1-4845-95a0-02a74a15306d-175622.jpeg)
 
 #### 1.1. 准备工作：
 ##### 1.1.1. 创建student表：
@@ -1757,7 +1757,7 @@ END
 ##### 1.2.1. 避免使用select *
 阿里规范：
 
-![1679833438373-bb9be90a-ea5e-4ea6-9c76-25cf88bd9dde.png](./img/4_xIH9kdrSNB7IMN/1679833438373-bb9be90a-ea5e-4ea6-9c76-25cf88bd9dde-267037.png)
+![1679833438373-bb9be90a-ea5e-4ea6-9c76-25cf88bd9dde.png](img/4_xIH9kdrSNB7IMN/1679833438373-bb9be90a-ea5e-4ea6-9c76-25cf88bd9dde-267037.png)
 
 分析：
 
@@ -1775,7 +1775,7 @@ EXPLAIN select * from student where name like 'mock_name%';--替换成表对应�
 SHOW WARNINGS;
 ```
 
-![1679907093052-e96f1904-b7cf-444c-abdb-f86952d8f13a.png](./img/4_xIH9kdrSNB7IMN/1679907093052-e96f1904-b7cf-444c-abdb-f86952d8f13a-576956.png)
+![1679907093052-e96f1904-b7cf-444c-abdb-f86952d8f13a.png](img/4_xIH9kdrSNB7IMN/1679907093052-e96f1904-b7cf-444c-abdb-f86952d8f13a-576956.png)
 
 总结：
 
@@ -1784,9 +1784,9 @@ SHOW WARNINGS;
 + 在实际应用中我们通常只需要使用某几个字段，其他不需要使用的字段也查出来**浪费CPU、内存资源**；
 + 文本数据、大字段数据数据传输**增加网络消耗**。
 
-![1679895428685-931f82f5-ce79-410a-a0cd-4104b5a96150.jpeg](./img/4_xIH9kdrSNB7IMN/1679895428685-931f82f5-ce79-410a-a0cd-4104b5a96150-727513.jpeg)![1680414456643-db561b76-ec69-430a-9b3d-7bee93b2a498.jpeg](./img/4_xIH9kdrSNB7IMN/1680414456643-db561b76-ec69-430a-9b3d-7bee93b2a498-397689.jpeg)
+![1679895428685-931f82f5-ce79-410a-a0cd-4104b5a96150.jpeg](img/4_xIH9kdrSNB7IMN/1679895428685-931f82f5-ce79-410a-a0cd-4104b5a96150-727513.jpeg)![1680414456643-db561b76-ec69-430a-9b3d-7bee93b2a498.jpeg](img/4_xIH9kdrSNB7IMN/1680414456643-db561b76-ec69-430a-9b3d-7bee93b2a498-397689.jpeg)
 
-![画板](./img/4_xIH9kdrSNB7IMN/1680874940944-32aa1d07-82f6-4dd8-b3c8-f98fcdb01f9a-026616.jpeg)
+![画板](img/4_xIH9kdrSNB7IMN/1680874940944-32aa1d07-82f6-4dd8-b3c8-f98fcdb01f9a-026616.jpeg)
 
 #####  1.2.2. 小表驱动大表
 小表驱动大表就是指用数据量较小、索引比较完备的表，然后使用其索引和条件对大表进行数据筛选，从而减少数据计算量，提高查询效率。比如说student表有30条数据，scores表有80w条数据。
@@ -1797,14 +1797,14 @@ EXPLAIN
 select * from student left join scores on student.id = scores.student_id;
 ```
 
-![1680182182469-d69c3714-7715-41f9-9e91-6dd2ad551cb8.png](./img/4_xIH9kdrSNB7IMN/1680182182469-d69c3714-7715-41f9-9e91-6dd2ad551cb8-488081.png)
+![1680182182469-d69c3714-7715-41f9-9e91-6dd2ad551cb8.png](img/4_xIH9kdrSNB7IMN/1680182182469-d69c3714-7715-41f9-9e91-6dd2ad551cb8-488081.png)
 
 ```sql
 EXPLAIN
 select * from scores left join student on student.id = scores.student_id;
 ```
 
-![1680182212063-2213e902-f8ee-465d-bf8d-420a97dc49c3.png](./img/4_xIH9kdrSNB7IMN/1680182212063-2213e902-f8ee-465d-bf8d-420a97dc49c3-841824.png)
+![1680182212063-2213e902-f8ee-465d-bf8d-420a97dc49c3.png](img/4_xIH9kdrSNB7IMN/1680182212063-2213e902-f8ee-465d-bf8d-420a97dc49c3-841824.png)
 
 Join Buffer（连接缓冲区）是优化器用于处理连接查询操作时的临时缓冲区。简单来说当我们需要比较两个或多个表的数据进行Join操作时，Join Buffer可以帮助MySQL临时存储结果，以减少磁盘读取和CPU负担，提高查询效率。需要注意的是每个join都有一个单独的缓冲区。
 
@@ -1826,7 +1826,7 @@ Block nested-loop join（BNL算法）会将驱动表数据加载到join buffer
 
 7、记录下匹配结果。
 
-![1680182275517-453a9fad-190b-4aee-b52a-857b6d8ee3c9.jpeg](./img/4_xIH9kdrSNB7IMN/1680182275517-453a9fad-190b-4aee-b52a-857b6d8ee3c9-035570.jpeg)
+![1680182275517-453a9fad-190b-4aee-b52a-857b6d8ee3c9.jpeg](img/4_xIH9kdrSNB7IMN/1680182275517-453a9fad-190b-4aee-b52a-857b6d8ee3c9-035570.jpeg)
 
 
 
@@ -1874,11 +1874,11 @@ select remarks from scores group by remarks;
 
 添加索引前：
 
-![1680009924139-fd0faa83-2ea0-4df5-8222-cbe3e5fd3517.png](./img/4_xIH9kdrSNB7IMN/1680009924139-fd0faa83-2ea0-4df5-8222-cbe3e5fd3517-747056.png)
+![1680009924139-fd0faa83-2ea0-4df5-8222-cbe3e5fd3517.png](img/4_xIH9kdrSNB7IMN/1680009924139-fd0faa83-2ea0-4df5-8222-cbe3e5fd3517-747056.png)
 
 添加索引后：
 
-![1680009975989-b2c20052-c6f8-4103-8cb7-506e379b9540.png](./img/4_xIH9kdrSNB7IMN/1680009975989-b2c20052-c6f8-4103-8cb7-506e379b9540-955300.png)
+![1680009975989-b2c20052-c6f8-4103-8cb7-506e379b9540.png](img/4_xIH9kdrSNB7IMN/1680009975989-b2c20052-c6f8-4103-8cb7-506e379b9540-955300.png)
 
 + 调整查询：查询的写法也会影响group by的效率。可以尝试不使用子查询或临时表，或者可以使用JOIN或EXISTS来代替IN子查询。
 + 限制结果集的数量：如果你只需要查看一小部分结果，可以在查询中添加LIMIT子句，以便只返回一定数量的结果。
@@ -2032,7 +2032,7 @@ union all
 select id,student_id,score from scores
 ```
 
-![1680010654025-dbaa938f-f592-4991-91a5-26b979fb21ed.png](./img/4_xIH9kdrSNB7IMN/1680010654025-dbaa938f-f592-4991-91a5-26b979fb21ed-338747.png)
+![1680010654025-dbaa938f-f592-4991-91a5-26b979fb21ed.png](img/4_xIH9kdrSNB7IMN/1680010654025-dbaa938f-f592-4991-91a5-26b979fb21ed-338747.png)
 
 ```sql
 select id,name,department from student
@@ -2040,7 +2040,7 @@ union
 select id,student_id,score from scores
 ```
 
-![1680010615392-70b04309-469c-4e6e-907e-171a3bc5d171.png](./img/4_xIH9kdrSNB7IMN/1680010615392-70b04309-469c-4e6e-907e-171a3bc5d171-834425.png)
+![1680010615392-70b04309-469c-4e6e-907e-171a3bc5d171.png](img/4_xIH9kdrSNB7IMN/1680010615392-70b04309-469c-4e6e-907e-171a3bc5d171-834425.png)
 
 那么union all与union如果当然它业务数据容许出现重复的记录，我们更推荐使用union all，因为union去重数据需要遍历、排序和比较，它更耗时，更消耗cpu资源，但是数据结果最完整。
 
